@@ -6,24 +6,24 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="author" content="Win Recruit Nepal Nepal"/>
-		<meta name="description" content="@if(!empty(@$setting_data->meta_description)) {{ucwords(@$setting_data->meta_description)}} @else Win Recruit Nepal @endif "/>
-		<meta name="keywords" content="@if(!empty(@$setting_data->meta_tags)) {{@$setting_data->meta_tags}} @else Win Recruit Nepal @endif ">
-		<link rel="canonical" href="https://winrecruitnepal.com/" />
+		<meta name="author" content="Src Job Placement"/>
+		<meta name="description" content="@if(!empty(@$setting_data->meta_description)) {{ucwords(@$setting_data->meta_description)}} @else Src Job Placement @endif "/>
+		<meta name="keywords" content="@if(!empty(@$setting_data->meta_tags)) {{@$setting_data->meta_tags}} @else Src Job Placement @endif ">
+		<link rel="canonical" href="https://srcjobplacement.com/" />
 		<meta name="csrf-token" content="{{ csrf_token() }}" />
 
 			<!-- SITE TITLE -->
 		@if (\Request::is('/'))
-		    <title>@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Win Recruit Nepal @endif </title>
+		    <title>@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Src Job Placement @endif </title>
 		@else
-            <title>@yield('title') | @if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Win Recruit Nepal @endif </title>
+            <title>@yield('title') | @if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Src Job Placement @endif </title>
 		@endif
-		<meta property="og:title" content="@if(!empty(@$setting_data->meta_title)) {{ucwords(@$setting_data->meta_title)}} @else Win Recruit Nepal @endif" />
+		<meta property="og:title" content="@if(!empty(@$setting_data->meta_title)) {{ucwords(@$setting_data->meta_title)}} @else Src Job Placement @endif" />
 		<meta property="og:type" content="Consultancy" />
-		<meta property="og:url" content="https://winrecruitnepal.com/" />
+		<meta property="og:url" content="https://srcjobplacement.com/" />
 
-		<meta property="og:site_name" content="Win Recruit Nepal" />
-		<meta property="og:description" content="@if(!empty(@$setting_data->meta_description)) {{ucwords(@$setting_data->meta_description)}} @else Win Recruit Nepal @endif " />
+		<meta property="og:site_name" content="Src Job Placement" />
+		<meta property="og:description" content="@if(!empty(@$setting_data->meta_description)) {{ucwords(@$setting_data->meta_description)}} @else Src Job Placement @endif " />
 
 
 		<!-- FAVICON AND TOUCH ICONS -->
@@ -31,27 +31,42 @@
 		<link rel="shortcut icon" type="image/x-icon" href="<?php if(@$setting_data->favicon){?>{{asset('/images/settings/'.@$setting_data->favicon)}}<?php }?>">
 
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600&amp;family=Kumbh+Sans:wght@400;500;700&amp;family=Shadows+Into+Light&amp;display=swap" rel="stylesheet">
-    
-    <!-- Flaticon -->
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/flaticon.min.css')}}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/fontawesome-5.14.0.min.css')}}">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/bootstrap.min.css')}}">
-    <!-- Magnific Popup -->
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/magnific-popup.min.css')}}">
-    <!-- Nice Select -->
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/nice-select.min.css')}}">
-    <!-- Type Writer -->
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/jquery.animatedheadline.css')}}">
-    <!-- Animate -->
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/animate.min.css')}}">
-    <!-- Slick -->
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/slick.min.css')}}">
+     <!-- fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com/">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/bootstrap/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/animate/animate.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/animate/custom-animate.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/fontawesome/css/all.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/jarallax/jarallax.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/jquery-magnific-popup/jquery.magnific-popup.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/nouislider/nouislider.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/nouislider/nouislider.pips.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/odometer/odometer.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/swiper/swiper.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/conalz-icons/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/tiny-slider/tiny-slider.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/reey-font/stylesheet.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/owl-carousel/owl.carousel.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/owl-carousel/owl.theme.default.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/bxslider/jquery.bxslider.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/bootstrap-select/css/bootstrap-select.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/vegas/vegas.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/jquery-ui/jquery-ui.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/timepicker/timePicker.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/vendors/polyglot-language-switcher/polyglot-language-switcher.css')}}" />
+    <!-- template styles -->
+    <link rel="stylesheet" href="{{asset('assets/frontend/css/conalz.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/frontend/css/conalz-responsive.css')}}" />
     <!-- Main Style -->
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/style.css')}}">
 
 		 <!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id={{@$setting_data->google_analytics}}"></script>
@@ -64,66 +79,78 @@
 		</script>
     <style>
       .main-menu .navbar-collapse li.active a {
-          color: #fc653c;
+          /* color: #fc653c; */
       }
     </style>
         @yield('css')
 
 	</head>
 
-  <body class="home-one">
+    <body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+
+    <div class="preloader">
+        <div class="preloader__image"></div>
+    </div>
+    <!-- /.preloader -->
+
+
     <div class="page-wrapper">
-
-        <!-- Preloader -->
-        <!-- <div class="preloader"></div> -->
-
-        <!-- main header -->
-        <header class="main-header {{request()->is('/') ? 'header-two' : 'header-three menu-absolute'}} ">
-            <!--Header-Upper-->
-            <div class="header-upper">
-                <div class="container clearfix">
-
-                    <div class="header-inner rel d-flex align-items-center">
-                        <div class="logo-outer">
-                            <div class="logo"><a href="/">
-                              @if(request()->is('/'))
-                              <img src="<?php if(@$setting_data->logo_white){?>{{asset('/images/settings/'.@$setting_data->logo_white)}}<?php } ?>" alt="Logo white">
-
-                              @else
-                              <img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }?>"  alt="Win Recruit Nepal" title="Win Recruit Nepal">
-                              
-                              @endif
-                            </a></div>
-                        </div>
-
-                        <div class="nav-outer clearfix">
-                            <!-- Main Menu -->
-                            <nav class="main-menu navbar-expand-lg">
-                                <div class="navbar-header">
-                                   <div class="mobile-logo my-15">
-                                       <a href="/">
-                                       @if(request()->is('/'))
-                                        <img src="<?php if(@$setting_data->logo_white){?>{{asset('/images/settings/'.@$setting_data->logo_white)}}<?php } ?>" alt="Logo white">
-
-                                        @else
-                                        <img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }?>"  alt="Win Recruit Nepal" title="Win Recruit Nepal">
-                                        
-                                        @endif
-                                       </a>
-                                   </div>
-                                   
-                                    <!-- Toggle Button -->
-                                    <button type="button" class="navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
+        <header class="main-header clearfix">
+            <div class="main-header__top">
+                <div class="main-header__top-inner clearfix">
+                    <div class="main-header__top-left">
+                        <ul class="list-unstyled main-header__top-address-list">
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-email-1"></span>
                                 </div>
+                                <div class="text">
+                                    <p><a href="mailto:helpus24@gmail.com">helpus24@gmail.com</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-clock"></span>
+                                </div>
+                                <div class="text">
+                                    <p>Mon - Fri 8:00 - 6:30</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="main-header__top-right">
+                        <div class="main-header__btn-box">
+                            <a href="contact.html" class="thm-btn main-header__btn">Get Consulting</a>
+                        </div>
+                        <div class="main-header__top-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="main-menu clearfix">
+                <div class="main-menu__wrapper clearfix">
+                    <div class="main-menu__wrapper-inner clearfix">
+                        <div class="main-menu__left">
+                            <div class="main-menu__logo">
+                                    @if(request()->is('/'))
 
-                                <div class="navbar-collapse collapse clearfix">
-                                    <ul class="navigation clearfix">
-                                       
-                                        <li class="{{request()->is('/') ? 'active' : ''}} ">
+                                        <a href="/"> <img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }?>"  alt="Src Job Placement" title="Src Job Placement"></a>
+
+                                   
+
+                                    @endif
+                            </div>
+                            <div class="main-menu__main-menu-box">
+                                <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                                <ul class="main-menu__list">
+                                <li class="{{request()->is('/') ? 'active' : ''}} ">
                                           <a href="/" >Home</a>
                                         </li>
 
@@ -258,26 +285,92 @@
                                               @endif
                                           @endforeach
                                       @endif
-                                    </ul>
+
+                                    <li class="dropdown current">
+                                        <a href="index.html">Home </a>
+                                        <ul>
+                                            <li><a href="index.html">Home One</a></li>
+                                            <li><a href="index2.html">Home Two</a></li>
+                                            <li><a href="index3.html">Home Three</a></li>
+                                            <li class="dropdown">
+                                                <a href="#">Header Styles</a>
+                                                <ul>
+                                                    <li><a href="index.html">Header One</a></li>
+                                                    <li><a href="index2.html">Header Two</a></li>
+                                                    <li><a href="index3.html">Header Three</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#">Services</a>
+                                        <ul>
+                                            <li><a href="services-v-1.html">Services V-1</a></li>
+                                            <li><a href="services-v-2.html">Services V-2</a></li>
+                                            <li><a href="product-design.html">Product Design</a></li>
+                                            <li><a href="business-consulting.html">Business Consulting</a></li>
+                                            <li><a href="finance-consulting.html">Finance Consulting</a></li>
+                                            <li><a href="digital-marketing-audit.html">Digital Marketing Audit</a></li>
+                                            <li><a href="data-risk-audit.html">Data Risk Audit</a></li>
+                                            <li><a href="customer-relationship.html">Customer Relationship</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="about.html">About</a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#">Projects</a>
+                                        <ul>
+                                            <li><a href="project-v-1.html">Project V-1</a></li>
+                                            <li><a href="project-v-2.html">Project V-2</a></li>
+                                            <li><a href="project-details.html">Project Single</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#">Page</a>
+                                        <ul>
+                                            <li><a href="team.html">Team</a></li>
+                                            <li><a href="faq.html">FAQs</a></li>
+                                            <li><a href="404.html">404 Error</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#">Blog</a>
+                                        <ul>
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="blog-list.html">Blog List</a></li>
+                                            <li><a href="blog-details.html">Blog Single</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="main-menu__right">
+                            <div class="main-menu__call-search">
+                                <div class="main-menu__call">
+                                    <div class="main-menu__call-icon">
+                                        <span class="icon-phone"></span>
+                                    </div>
+                                    <div class="main-menu__call-content">
+                                        <span>Phone Number</span>
+                                        <p><a href="tel:08800115244">(088) 00-11-52-44</a></p>
+                                    </div>
                                 </div>
-
-                            </nav>
-                            <!-- Main Menu End-->
+                                <div class="main-menu__search-box">
+                                    <p class="main-menu__search-text">Search</p>
+                                    <a href="#" class="main-menu__search search-toggler icon-search"></a>
+                                </div>
+                            </div>
                         </div>
-                        
-                   
-                        
-                        <!-- Menu Button -->
-                        <div class="menu-btns">
-                           <a href="{{route('contact')}}" class="theme-btn {{request()->is('/') ? 'style-three' : ''}}">Contact <i class="fas fa-angle-double-right"></i></a>
-                           
-                        
-                        </div>
-
-                      
                     </div>
                 </div>
-            </div>
-            <!--End Header Upper-->
+            </nav>
         </header>
-       
+
+        <div class="stricky-header stricked-menu main-menu">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
