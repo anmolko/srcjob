@@ -1,7 +1,7 @@
 
         <!--Site Footer Start-->
         <footer class="site-footer">
-            <div class="site-footer-bg" style="background-image: url(assets/images/backgrounds/site-footer-bg.jpg);">
+            <div class="site-footer-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/site-footer-bg.jpg')}});">
             </div>
             <div class="site-footer__top">
                 <div class="container">
@@ -10,14 +10,14 @@
                             <div class="footer-widget__column footer-widget__about">
                                 <div class="footer-widget__about-logo-box">
                                     <div class="footer-widget__about-logo">
-                                        <a href="#">
-                                            <img src="assets/images/resources/footer-logo-1.png" alt="">
-                                        </a>
+                                        
+                                     <a href="/"><img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php } ?>" alt="Logo"></a>
+
                                     </div>
                                 </div>
                                 <div class="footer-widget__about-content">
-                                    <p>Our agency manages a vast amount <br> of digital support services to businesses
-                                        <br> digital business consulting firm</p>
+                                    <p> @if(!empty(@$setting_data->website_description)) {!! ucfirst(@$setting_data->website_description) !!} @else Win Recruit @endif
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -25,31 +25,52 @@
                             <div class="footer-widget__latest-post">
                                 <h4 class="footer-widget__tag">Latest Post</h4>
                                 <ul class="footer-widget__content list-unstyled">
-                                    <li>
-                                        <span>25 July 2022</span>
-                                        <p><a href="blog-details.html">Packaging Design Consulting For Start-up
-                                                Business</a></p>
-                                    </li>
-                                    <li>
-                                        <span>25 July 2022</span>
-                                        <p><a href="blog-details.html">Grow Market Share Through Marketing
-                                                Consulting</a></p>
-                                    </li>
+                                    @if(!empty($latestPostsfooter))
+                                        @foreach($latestPostsfooter as $latestPosts)
+                                        <li>
+                                            <span>{{date('j M Y',strtotime(@$latestPosts->created_at))}}</span>
+                                            <p><a href="{{route('blog.single',$latestPosts->slug)}}">{{ucwords($latestPosts->title)}}</a></p>
+                                        </li>
+                                        @endforeach
+                                    @endif
                                 </ul>
                             </div>
                         </div>
                         <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                            <div class="footer-widget__services">
-                                <h4 class="footer-widget__tag">Services</h4>
-                                <ul class="footer-widget__services-list list-unstyled">
-                                    <li><a href="digital-marketing-audit.html">Digital Consulting</a></li>
-                                    <li><a href="business-consulting.html">Business Consulting</a></li>
-                                    <li><a href="blog.html">News & Events</a></li>
-                                    <li><a href="business-consulting.html">Build Business</a></li>
-                                    <li><a href="finance-consulting.html">Business Strategy</a></li>
-                                    <li><a href="about.html">About us</a></li>
-                                </ul>
-                            </div>
+                            @if(@$footer_nav_data1 !== null)
+
+                                <div class="footer-widget__services">
+                                    <h4 class="footer-widget__tag">@if(@$footer_nav_title2 !== null) {{@$footer_nav_title2}} @else Useful Links @endif</h4>
+                                    <ul class="footer-widget__services-list list-unstyled">
+                                        @if(!empty($footer_nav_data1))
+                                            @foreach($footer_nav_data1 as $nav)
+                                                @if(!empty($nav->children[0]))
+                                                @else
+                                                @if($nav->type == 'custom')
+                                                <li >
+                                                    @if(str_contains(@$nav->slug,'http'))
+                                                    <a href="{{$nav->slug}}"  @if($nav->target == NULL)  @else target="{{$nav->target}}" @endif>  @if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
+                                                    @else
+                                                    <a href="/{{$nav->slug}}"  @if($nav->target == NULL)  @else target="{{$nav->target}}" @endif>  @if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
+                                                    @endif
+
+                                                @elseif($nav->type == 'service')
+                                                <li >
+                                                    <a href="{{url('service')}}/{{$nav->slug}}" @if($nav->target == NULL)  @else target="{{$nav->target}}" @endif>@if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
+                                                @elseif($nav->type == 'post')
+                                                <li >
+                                                    <a href="{{url('blog')}}/{{$nav->slug}}" @if($nav->target == NULL)  @else target="{{$nav->target}}" @endif>@if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
+                                                @else
+                                                <li >
+                                                    <a href="{{url('/')}}/{{$nav->slug}}" @if($nav->target == NULL)  @else target="{{$nav->target}}" @endif> @if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
+                                                @endif
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                            @endif
+
                         </div>
                         <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
                             <div class="footer-widget__contact">
@@ -60,7 +81,7 @@
                                             <i class="icon-email-1"></i>
                                         </div>
                                         <div class="text">
-                                            <p><a href="mailto:helpus24@gmail.com">helpus24@gmail.com</a></p>
+                                            <p><a href="mailto:@if(!empty(@$setting_data->email)) {{@$setting_data->email}} @else example@gmail.com @endif">@if(!empty(@$setting_data->email)) {{@$setting_data->email}} @else example@gmail.com @endif</a></p>
                                         </div>
                                     </li>
                                     <li>
@@ -68,7 +89,7 @@
                                             <i class="icon-phone"></i>
                                         </div>
                                         <div class="text">
-                                            <p><a href="tel:0881122334455">+088 11 22 33 44 55</a></p>
+                                            <p><a href="tel:@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif">@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif</a></p>
                                         </div>
                                     </li>
                                     <li>
@@ -76,20 +97,42 @@
                                             <i class="icon-location"></i>
                                         </div>
                                         <div class="text">
-                                            <p>818 SW 3RD Ave,#161,london Portland, OR</p>
+                                            <p>@if(!empty(@$setting_data->address)) {{@$setting_data->address}} @else Kathmandu, Nepal @endif</p>
                                         </div>
                                     </li>
                                 </ul>
                                 <ul class="footer-widget__social-box list-unstyled">
+                              
+                                @if(!empty(@$setting_data->facebook))
                                     <li>
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="@if(!empty(@$setting_data->facebook)) {{@$setting_data->facebook}} @endif" target="_blank" class="social-fb"
+                                        ><i class="fab fa-facebook-f"></i
+                                        ></a>   
                                     </li>
+                                @endif
+                                @if(!empty(@$setting_data->youtube))
                                     <li>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="@if(!empty(@$setting_data->youtube)) {{@$setting_data->youtube}} @endif" target="_blank" class="social-youtube"
+                                        ><i class="fab fa-youtube"></i
+                                        ></a>
                                     </li>
+                                @endif
+                                @if(!empty(@$setting_data->instagram))
                                     <li>
-                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+
+                                        <a href="@if(!empty(@$setting_data->instagram)) {{@$setting_data->instagram}} @endif" target="_blank" class="social-instagram"
+                                        ><i class="fab fa-instagram"></i
+                                        ></a>
                                     </li>
+                                @endif
+                                @if(!empty(@$setting_data->linkedin))
+                                    <li>
+
+                                        <a href="@if(!empty(@$setting_data->linkedin)) {{@$setting_data->linkedin}} @endif" target="_blank" class="social-linkedin"
+                                        ><i class="fab fa-linkedin-in"></i
+                                        ></a>
+                                    </li>
+                                @endif
                                 </ul>
                             </div>
                         </div>
@@ -102,14 +145,20 @@
                         <div class="col-xl-12">
                             <div class="site-footer__bottom-inner">
                                 <div class="site-footer__bottom-text">
-                                    <p>Copyright © 2022 Template_mr. All Rights Reserved.</p>
+                                    <p>Copyright © {{date("Y")}} <a
+							href="/"
+							class="theme-color"
+							>@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @endif</a>. Developed by
+							<a href="https://www.canosoft.com.np/" class="theme-color"
+							>Canosoft Techonology </a
+							>. All Rights Reserved.</p>
                                 </div>
                                 <ul class="site-footer__bottom-text-two list-unstyled">
                                     <li>
-                                        <a href="about.html">Terms of Use</a>
+                                        <a href="/">Home</a>
                                     </li>
                                     <li>
-                                        <a href="about.html">Privacy Policy</a>
+                                        <a href="{{route('contact')}}">Contact</a>
                                     </li>
                                 </ul>
                             </div>
@@ -131,7 +180,7 @@
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="index.html" aria-label="logo image"><img src="assets/images/resources/footer-logo-1.png"
+                <a href="/" aria-label="logo image"><img src="assets/images/resources/footer-logo-1.png"
                         width="143" alt="" /></a>
             </div>
             <!-- /.logo-box -->
@@ -141,19 +190,39 @@
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
                     <i class="fa fa-envelope"></i>
-                    <a href="mailto:needhelp@packageName__.com">needhelp@conalz.com</a>
+                    <a href="mailto:@if(!empty(@$setting_data->email)) {{@$setting_data->email}} @else example@gmail.com @endif">@if(!empty(@$setting_data->email)) {{@$setting_data->email}} @else example@gmail.com @endif</a>
                 </li>
                 <li>
                     <i class="fa fa-phone-alt"></i>
-                    <a href="tel:666-888-0000">666 888 0000</a>
+                    <a href="tel:@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif">@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif</a>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__top">
                 <div class="mobile-nav__social">
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-facebook-square"></a>
-                    <a href="#" class="fab fa-pinterest-p"></a>
-                    <a href="#" class="fab fa-instagram"></a>
+                   
+                    @if(!empty(@$setting_data->facebook))
+                        <a href="@if(!empty(@$setting_data->facebook)) {{@$setting_data->facebook}} @endif" target="_blank" class="social-fb"
+                        ><i class="fab fa-facebook-f"></i
+                        ></a>
+                    @endif
+                    @if(!empty(@$setting_data->youtube))
+
+                        <a href="@if(!empty(@$setting_data->youtube)) {{@$setting_data->youtube}} @endif" target="_blank" class="social-youtube"
+                        ><i class="fab fa-youtube"></i
+                        ></a>
+                    @endif
+                    @if(!empty(@$setting_data->instagram))
+
+                        <a href="@if(!empty(@$setting_data->instagram)) {{@$setting_data->instagram}} @endif" target="_blank" class="social-instagram"
+                        ><i class="fab fa-instagram"></i
+                        ></a>
+                    @endif
+                    @if(!empty(@$setting_data->linkedin))
+
+                        <a href="@if(!empty(@$setting_data->linkedin)) {{@$setting_data->linkedin}} @endif" target="_blank" class="social-linkedin"
+                        ><i class="fab fa-linkedin-in"></i
+                        ></a>
+                    @endif
                 </div><!-- /.mobile-nav__social -->
             </div><!-- /.mobile-nav__top -->
 
@@ -164,21 +233,7 @@
     </div>
     <!-- /.mobile-nav__wrapper -->
 
-    <div class="search-popup">
-        <div class="search-popup__overlay search-toggler"></div>
-        <!-- /.search-popup__overlay -->
-        <div class="search-popup__content">
-            <form action="#">
-                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-                <input type="text" id="search" placeholder="Search Here..." />
-                <button type="submit" aria-label="search submit" class="thm-btn">
-                    <i class="icon-search"></i>
-                </button>
-            </form>
-        </div>
-        <!-- /.search-popup__content -->
-    </div>
-    <!-- /.search-popup -->
+ 
 
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 

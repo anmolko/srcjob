@@ -4690,7 +4690,7 @@ ul {
   background-color: var(--conalz-white);
   opacity: .80;
   top: 16px;
-  left: 105px;
+  left: 55px;
   content: "";
 }
 
@@ -9607,4 +9607,8 @@ ul {
 
 .sidebar__category-list li a.active .sideber__category-arrow {
   color: var(--conalz-white);
+}
+
+a.theme-color {
+  color: #005cff;
 }

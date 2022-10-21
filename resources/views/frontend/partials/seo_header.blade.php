@@ -70,7 +70,6 @@
         @yield('css')
 
 	</head>
-
 <body class="custom-cursor">
 
     <div class="custom-cursor__cursor"></div>
@@ -87,7 +86,7 @@
                                     <span class="icon-email-1"></span>
                                 </div>
                                 <div class="text">
-                                    <p><a href="mailto:helpus24@gmail.com">helpus24@gmail.com</a></p>
+                                    <p><a href="mailto:@if(!empty(@$setting_data->email)) {{@$setting_data->email}} @else example@gmail.com @endif">@if(!empty(@$setting_data->email)) {{@$setting_data->email}} @else example@gmail.com @endif</a></p>
                                 </div>
                             </li>
                             <li>
@@ -95,19 +94,40 @@
                                     <span class="icon-clock"></span>
                                 </div>
                                 <div class="text">
-                                    <p>Mon - Fri 8:00 - 6:30</p>
+                                    <p>Sun - Fri 9:00 am - 6:00 pm</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div class="main-header__top-right">
                         <div class="main-header__btn-box">
-                            <a href="contact.html" class="thm-btn main-header__btn">Get Consulting</a>
+                            <a href="{{route('contact')}}" class="thm-btn main-header__btn">Get Consulting</a>
                         </div>
                         <div class="main-header__top-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        
+                                @if(!empty(@$setting_data->facebook))
+                                <a href="@if(!empty(@$setting_data->facebook)) {{@$setting_data->facebook}} @endif" target="_blank" class="social-fb"
+                                ><i class="fab fa-facebook-f"></i
+                                ></a>
+                                @endif
+                                @if(!empty(@$setting_data->youtube))
+
+                                <a href="@if(!empty(@$setting_data->youtube)) {{@$setting_data->youtube}} @endif" target="_blank" class="social-youtube"
+                                ><i class="fab fa-youtube"></i
+                                ></a>
+                                @endif
+                                @if(!empty(@$setting_data->instagram))
+
+                                <a href="@if(!empty(@$setting_data->instagram)) {{@$setting_data->instagram}} @endif" target="_blank" class="social-instagram"
+                                ><i class="fab fa-instagram"></i
+                                ></a>
+                                @endif
+                                @if(!empty(@$setting_data->linkedin))
+
+                                <a href="@if(!empty(@$setting_data->linkedin)) {{@$setting_data->linkedin}} @endif" target="_blank" class="social-linkedin"
+                                ><i class="fab fa-linkedin-in"></i
+                                ></a>
+                                @endif
                         </div>
                     </div>
                 </div>
@@ -118,211 +138,147 @@
                         <div class="main-menu__left">
                             <div class="main-menu__logo">
                                     @if(request()->is('/'))
-
                                         <a href="/"> <img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }?>"  alt="Src Job Placement" title="Src Job Placement"></a>
-
-                                   
-
                                     @endif
                             </div>
                             <div class="main-menu__main-menu-box">
                                 <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                 <ul class="main-menu__list">
-                                <li class="{{request()->is('/') ? 'active' : ''}} ">
-                                          <a href="/" >Home</a>
+                                        <li class="{{request()->is('/') ? 'current' : ''}} ">
+                                        <a href="/" >Home</a>
                                         </li>
 
                                         @if(!empty($top_nav_data))
-                                          @foreach($top_nav_data as $nav)
-                                              @if(!empty($nav->children[0]))
+                                        @foreach($top_nav_data as $nav)
+                                            @if(!empty($nav->children[0]))
 
-                                                  <li id="{{@$loop->index}}" class="{{request()->is(@$nav->slug)  ? 'active' : ''}} dropdown">
-                                                      <a href="#" class="">@if(@$nav->name == NULL) {{ucwords(@$nav->title)}} @else {{ucwords(@$nav->name)}} @endif </a>
+                                                <li id="{{@$loop->index}}" class="{{request()->is(@$nav->slug)  ? 'current' : ''}} dropdown">
+                                                    <a href="#" class="">@if(@$nav->name == NULL) {{ucwords(@$nav->title)}} @else {{ucwords(@$nav->name)}} @endif </a>
 
-                                                      <ul >
+                                                        <ul >
+                                                        @foreach($nav->children[0] as $childNav)
+                                                            @if($childNav->type == 'custom')
 
-                                                          @foreach($nav->children[0] as $childNav)
-                                                              @if($childNav->type == 'custom')
+                                                                <li  class="{{request()->is(@$childNav->slug) ? 'current' : ''}} @if(!empty($childNav->children[0])) dropdown @endif ">
+                                                                    <a href="/{{@$childNav->slug}}" class="" @if(@$childNav->target !== NULL) target="_blank" @endif >@if($childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif</a>
+                                                                    @if(!empty($childNav->children[0]))
+                                                                        <ul >
+                                                                            @foreach($childNav->children[0] as $key => $lastchild)
+                                                                                @if($lastchild->type == 'custom')
+                                                                                    <li  class="{{request()->is(@$lastchild->slug) ? 'current' : ''}} ">
+                                                                                        <a href="/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif >@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
+                                                                                @elseif($lastchild->type == 'post')
+                                                                                    <li  class="{{request()->is('blog/'.@$lastchild->slug) ? 'current' : ''}} ">
+                                                                                        <a href="{{url('blog')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
+                                                                                @elseif($lastchild->type == 'service')
+                                                                                    <li  class="{{request()->is('service/'.@$lastchild->slug) ? 'current' : ''}}  ">
+                                                                                        <a href="{{url('service')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
+                                                                                @else
+                                                                                    <li  class="{{request()->is(@$lastchild->slug) ? 'current' : ''}} ">
+                                                                                            <a href="{{url('/')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a>
+                                                                                        </li>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    @endif
+                                                                </li>
+                                                            @elseif($childNav->type == 'post')
+                                                                <li  class="{{request()->is('blog/'.@$childNav->slug) ? 'current' : ''}}  @if(!empty($childNav->children[0]))  dropdown @endif">
+                                                                    <a href="{{url('blog')}}/{{@$childNav->slug}}"  @if(@$childNav->target !== NULL) target="_blank" @endif>@if(@$childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif</a>
+                                                                    @if(!empty($childNav->children[0]))
+                                                                        <ul >
+                                                                            @foreach($childNav->children[0] as $key => $lastchild)
+                                                                                @if($lastchild->type == 'custom')
+                                                                                    <li  class="{{request()->is(@$lastchild->slug) ? 'current' : ''}} ">
+                                                                                        <a href="/{{@$childNav->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif >@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
+                                                                                @elseif($lastchild->type == 'service')
+                                                                                    <li  class="{{request()->is('service/'.@$lastchild->slug) ? 'current' : ''}}  ">
+                                                                                        <a href="{{url('service')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
+                                                                                @elseif($lastchild->type == 'post')
+                                                                                    <li  class="{{request()->is('blog/'.@$lastchild->slug) ? 'current' : ''}}  ">
+                                                                                        <a href="{{url('blog')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
+                                                                                @else
+                                                                                    <li  class="{{request()->is(@$lastchild->slug) ? 'current' : ''}} ">
+                                                                                            <a href="{{url('/')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a>
+                                                                                        </li>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    @endif
+                                                                </li>
+                                                            @elseif($childNav->type == 'service')
+                                                                <li  class="{{request()->is('service/'.@$childNav->slug) ? 'current' : ''}}  @if(!empty($childNav->children[0]))  dropdown @endif">
+                                                                    <a href="{{url('service')}}/{{@$childNav->slug}}"  @if(@$childNav->target !== NULL) target="_blank" @endif>@if(@$childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif</a>
+                                                                    @if(!empty($childNav->children[0]))
+                                                                        <ul >
+                                                                            @foreach($childNav->children[0] as $key => $lastchild)
+                                                                                @if($lastchild->type == 'custom')
+                                                                                    <li  class="{{request()->is(@$lastchild->slug) ? 'current' : ''}} ">
+                                                                                        <a href="/{{@$childNav->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif >@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
+                                                                                @elseif($lastchild->type == 'service')
+                                                                                    <li  class="{{request()->is('service/'.@$lastchild->slug) ? 'current' : ''}}  ">
+                                                                                        <a href="{{url('service')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
+                                                                                @elseif($lastchild->type == 'post')
+                                                                                    <li  class="{{request()->is('blog/'.@$lastchild->slug) ? 'current' : ''}}  ">
+                                                                                        <a href="{{url('blog')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
+                                                                                @else
+                                                                                    <li  class="{{request()->is(@$lastchild->slug) ? 'current' : ''}} ">
+                                                                                            <a href="{{url('/')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a>
+                                                                                        </li>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    @endif
+                                                                </li>
+                                                            @else
+                                                                <li  class="{{request()->is(@$childNav->slug) ? 'current' : ''}}  @if(!empty($childNav->children[0]))  dropdown @endif ">
+                                                                    <a href="{{url('/')}}/{{@$childNav->slug}}"  @if(@$childNav->target !== NULL) target="_blank" @endif>@if($childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif</a>
+                                                                    @if(!empty($childNav->children[0]))
+                                                                        <ul >
+                                                                            @foreach($childNav->children[0] as $key => $lastchild)
+                                                                                @if($lastchild->type == 'custom')
+                                                                                    <li  class="{{request()->is(@$lastchild->slug) ? 'current' : ''}} ">
+                                                                                        <a href="/{{@$childNav->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif >@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
+                                                                                @elseif($lastchild->type == 'service')
+                                                                                    <li  class="{{request()->is('service/'.@$lastchild->slug) ? 'current' : ''}}  ">
+                                                                                        <a href="{{url('service')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
+                                                                                @elseif($lastchild->type == 'post')
+                                                                                    <li  class="{{request()->is('blog/'.@$lastchild->slug) ? 'current' : ''}}  ">
+                                                                                        <a href="{{url('blog')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
+                                                                                @else
+                                                                                    <li  class="{{request()->is(@$lastchild->slug) ? 'current' : ''}} ">
+                                                                                            <a href="{{url('/')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a>
+                                                                                        </li>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    @endif
 
-                                                                  <li  class="{{request()->is(@$childNav->slug) ? 'active' : ''}} @if(!empty($childNav->children[0])) dropdown @endif ">
-                                                                      <a href="/{{@$childNav->slug}}" class="" @if(@$childNav->target !== NULL) target="_blank" @endif >@if($childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif</a>
-                                                                      @if(!empty($childNav->children[0]))
-                                                                          <ul >
-                                                                              @foreach($childNav->children[0] as $key => $lastchild)
-                                                                                  @if($lastchild->type == 'custom')
-                                                                                      <li  class="{{request()->is(@$lastchild->slug) ? 'active' : ''}} active">
-                                                                                          <a href="/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif >@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
-                                                                                  @elseif($lastchild->type == 'post')
-                                                                                      <li  class="{{request()->is('blog/'.@$lastchild->slug) ? 'active' : ''}}  active">
-                                                                                          <a href="{{url('blog')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
-                                                                                  @elseif($lastchild->type == 'service')
-                                                                                      <li  class="{{request()->is('service/'.@$lastchild->slug) ? 'active' : ''}}  active">
-                                                                                          <a href="{{url('service')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
-                                                                                  @else
-                                                                                      <li  class="{{request()->is(@$lastchild->slug) ? 'active' : ''}} active">
-                                                                                              <a href="{{url('/')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a>
-                                                                                          </li>
-                                                                                  @endif
-                                                                              @endforeach
-                                                                          </ul>
-                                                                      @endif
-                                                                  </li>
-                                                              @elseif($childNav->type == 'post')
-                                                                  <li  class="{{request()->is('blog/'.@$childNav->slug) ? 'active' : ''}}  @if(!empty($childNav->children[0]))  dropdown @endif active">
-                                                                      <a href="{{url('blog')}}/{{@$childNav->slug}}"  @if(@$childNav->target !== NULL) target="_blank" @endif>@if(@$childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif</a>
-                                                                      @if(!empty($childNav->children[0]))
-                                                                          <ul >
-                                                                              @foreach($childNav->children[0] as $key => $lastchild)
-                                                                                  @if($lastchild->type == 'custom')
-                                                                                      <li  class="{{request()->is(@$lastchild->slug) ? 'active' : ''}} active">
-                                                                                          <a href="/{{@$childNav->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif >@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
-                                                                                  @elseif($lastchild->type == 'service')
-                                                                                      <li  class="{{request()->is('service/'.@$lastchild->slug) ? 'active' : ''}}  active">
-                                                                                          <a href="{{url('service')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
-                                                                                  @elseif($lastchild->type == 'post')
-                                                                                      <li  class="{{request()->is('blog/'.@$lastchild->slug) ? 'active' : ''}}  active">
-                                                                                          <a href="{{url('blog')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
-                                                                                  @else
-                                                                                      <li  class="{{request()->is(@$lastchild->slug) ? 'active' : ''}} active">
-                                                                                              <a href="{{url('/')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a>
-                                                                                          </li>
-                                                                                  @endif
-                                                                              @endforeach
-                                                                          </ul>
-                                                                      @endif
-                                                                  </li>
-                                                              @elseif($childNav->type == 'service')
-                                                                  <li  class="{{request()->is('service/'.@$childNav->slug) ? 'active' : ''}}  @if(!empty($childNav->children[0]))  dropdown @endif active">
-                                                                      <a href="{{url('service')}}/{{@$childNav->slug}}"  @if(@$childNav->target !== NULL) target="_blank" @endif>@if(@$childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif</a>
-                                                                      @if(!empty($childNav->children[0]))
-                                                                          <ul >
-                                                                              @foreach($childNav->children[0] as $key => $lastchild)
-                                                                                  @if($lastchild->type == 'custom')
-                                                                                      <li  class="{{request()->is(@$lastchild->slug) ? 'active' : ''}} active">
-                                                                                          <a href="/{{@$childNav->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif >@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
-                                                                                  @elseif($lastchild->type == 'service')
-                                                                                      <li  class="{{request()->is('service/'.@$lastchild->slug) ? 'active' : ''}}  active">
-                                                                                          <a href="{{url('service')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
-                                                                                  @elseif($lastchild->type == 'post')
-                                                                                      <li  class="{{request()->is('blog/'.@$lastchild->slug) ? 'active' : ''}}  active">
-                                                                                          <a href="{{url('blog')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
-                                                                                  @else
-                                                                                      <li  class="{{request()->is(@$lastchild->slug) ? 'active' : ''}} active">
-                                                                                              <a href="{{url('/')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a>
-                                                                                          </li>
-                                                                                  @endif
-                                                                              @endforeach
-                                                                          </ul>
-                                                                      @endif
-                                                                  </li>
-                                                              @else
-                                                                  <li  class="{{request()->is(@$childNav->slug) ? 'active' : ''}}  @if(!empty($childNav->children[0]))  dropdown @endif active">
-                                                                      <a href="{{url('/')}}/{{@$childNav->slug}}"  @if(@$childNav->target !== NULL) target="_blank" @endif>@if($childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif</a>
-                                                                      @if(!empty($childNav->children[0]))
-                                                                          <ul >
-                                                                              @foreach($childNav->children[0] as $key => $lastchild)
-                                                                                  @if($lastchild->type == 'custom')
-                                                                                      <li  class="{{request()->is(@$lastchild->slug) ? 'active' : ''}} active">
-                                                                                          <a href="/{{@$childNav->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif >@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
-                                                                                  @elseif($lastchild->type == 'service')
-                                                                                      <li  class="{{request()->is('service/'.@$lastchild->slug) ? 'active' : ''}}  active">
-                                                                                          <a href="{{url('service')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
-                                                                                  @elseif($lastchild->type == 'post')
-                                                                                      <li  class="{{request()->is('blog/'.@$lastchild->slug) ? 'active' : ''}}  active">
-                                                                                          <a href="{{url('blog')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if(@$lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a></li>
-                                                                                  @else
-                                                                                      <li  class="{{request()->is(@$lastchild->slug) ? 'active' : ''}} active">
-                                                                                              <a href="{{url('/')}}/{{@$lastchild->slug}}"  @if(@$lastchild->target !== NULL) target="_blank" @endif>@if($lastchild->name == NULL) {{@$lastchild->title}} @else {{@$lastchild->name}} @endif</a>
-                                                                                          </li>
-                                                                                  @endif
-                                                                              @endforeach
-                                                                          </ul>
-                                                                      @endif
+                                                                </li>
+                                                            @endif
+                                                        @endforeach
 
-                                                                  </li>
-                                                              @endif
-                                                          @endforeach
+                                                        </ul>
+                                                </li>
 
-                                                      </ul>
-                                                  </li>
-
-                                              @else
-                                                  @if($nav->type == 'custom')
-                                                      <li   class="{{request()->is(@$nav->slug.'*') ? 'active' : ''}} ">
-                                                          <a href="/{{$nav->slug}}"  @if($nav->target == NULL)  @else target="{{$nav->target}}" @endif>@if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
-                                                  @elseif($nav->type == 'service')
-                                                      <li   class="{{request()->is('service/'.@$nav->slug.'*') ? 'active' : ''}} ">
-                                                          <a href="{{url('service')}}/{{$nav->slug}}" >@if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
-                                                  @elseif($nav->type == 'post')
-                                                      <li   class="{{request()->is('blog/'.@$nav->slug.'*') ? 'active' : ''}} ">
-                                                          <a href="{{url('blog')}}/{{$nav->slug}}" >@if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
-                                                  @else
-                                                      <li   class="{{request()->is(@$nav->slug.'*') ? 'active' : ''}} ">
-                                                          <a href="{{url('/')}}/{{$nav->slug}}" >@if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
-                                                  @endif
-                                              @endif
-                                          @endforeach
-                                      @endif
-
-                                    <li class="dropdown current">
-                                        <a href="index.html">Home </a>
-                                        <ul>
-                                            <li><a href="index.html">Home One</a></li>
-                                            <li><a href="index2.html">Home Two</a></li>
-                                            <li><a href="index3.html">Home Three</a></li>
-                                            <li class="dropdown">
-                                                <a href="#">Header Styles</a>
-                                                <ul>
-                                                    <li><a href="index.html">Header One</a></li>
-                                                    <li><a href="index2.html">Header Two</a></li>
-                                                    <li><a href="index3.html">Header Three</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#">Services</a>
-                                        <ul>
-                                            <li><a href="services-v-1.html">Services V-1</a></li>
-                                            <li><a href="services-v-2.html">Services V-2</a></li>
-                                            <li><a href="product-design.html">Product Design</a></li>
-                                            <li><a href="business-consulting.html">Business Consulting</a></li>
-                                            <li><a href="finance-consulting.html">Finance Consulting</a></li>
-                                            <li><a href="digital-marketing-audit.html">Digital Marketing Audit</a></li>
-                                            <li><a href="data-risk-audit.html">Data Risk Audit</a></li>
-                                            <li><a href="customer-relationship.html">Customer Relationship</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="about.html">About</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#">Projects</a>
-                                        <ul>
-                                            <li><a href="project-v-1.html">Project V-1</a></li>
-                                            <li><a href="project-v-2.html">Project V-2</a></li>
-                                            <li><a href="project-details.html">Project Single</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#">Page</a>
-                                        <ul>
-                                            <li><a href="team.html">Team</a></li>
-                                            <li><a href="faq.html">FAQs</a></li>
-                                            <li><a href="404.html">404 Error</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#">Blog</a>
-                                        <ul>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-list.html">Blog List</a></li>
-                                            <li><a href="blog-details.html">Blog Single</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">Contact</a>
-                                    </li>
+                                            @else
+                                                @if($nav->type == 'custom')
+                                                    <li   class="{{request()->is(@$nav->slug.'*') ? 'current' : ''}} ">
+                                                        <a href="/{{$nav->slug}}"  @if($nav->target == NULL)  @else target="{{$nav->target}}" @endif>@if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
+                                                @elseif($nav->type == 'service')
+                                                    <li   class="{{request()->is('service/'.@$nav->slug.'*') ? 'current' : ''}} ">
+                                                        <a href="{{url('service')}}/{{$nav->slug}}" >@if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
+                                                @elseif($nav->type == 'post')
+                                                    <li   class="{{request()->is('blog/'.@$nav->slug.'*') ? 'current' : ''}} ">
+                                                        <a href="{{url('blog')}}/{{$nav->slug}}" >@if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
+                                                @else
+                                                    <li   class="{{request()->is(@$nav->slug.'*') ? 'current' : ''}} ">
+                                                        <a href="{{url('/')}}/{{$nav->slug}}" >@if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif</a></li>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -334,13 +290,10 @@
                                     </div>
                                     <div class="main-menu__call-content">
                                         <span>Phone Number</span>
-                                        <p><a href="tel:08800115244">(088) 00-11-52-44</a></p>
+                                        <p><a href="tel:@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif">@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif</a></p>
                                     </div>
                                 </div>
-                                <div class="main-menu__search-box">
-                                    <p class="main-menu__search-text">Search</p>
-                                    <a href="#" class="main-menu__search search-toggler icon-search"></a>
-                                </div>
+                            
                             </div>
                         </div>
                     </div>
