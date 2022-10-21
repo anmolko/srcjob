@@ -9589,3 +9589,22 @@ ul {
 /*--------------------------------------------------------------
 # FAQ Page
 --------------------------------------------------------------*/
+
+
+.blog-page__pagination .pg-pagination li a.active {
+  background-color: var(--conalz-base);
+  color: var(--conalz-white);
+}
+
+.sidebar__category-list li a.active:before {
+  transform: scale(1, 1);
+  transform-origin: left center;
+}
+
+.sidebar__category-list li a.active .sideber__category-count {
+  color: var(--conalz-base);
+}
+
+.sidebar__category-list li a.active .sideber__category-arrow {
+  color: var(--conalz-white);
+}
