@@ -55,10 +55,6 @@ class SliderController extends Controller
             'link'              => $request->input('link'),
             'status'            => $request->input('status'),
             'slider_link'       => $request->input('slider_link'),
-            'caption1'          => $request->input('caption1'),
-            'caption2'          => $request->input('caption2'),
-            'link2'             => $request->input('link2'),
-            'button2'           => $request->input('button2'),
             'created_by'        => Auth::user()->id,
         ];
 
@@ -66,7 +62,7 @@ class SliderController extends Controller
             $image        = $request->file('image');
             $name         = uniqid().'_'.$image->getClientOriginalName();
             $path         = base_path().'/public/images/sliders/';
-            $moved        = Image::make($image->getRealPath())->fit(995, 650)->orientate()->save($path.$name);
+            $moved        = Image::make($image->getRealPath())->fit(1920, 884)->orientate()->save($path.$name);
             if ($moved){
                 $data['image']= $name;
             }
@@ -121,17 +117,13 @@ class SliderController extends Controller
         $slider->link             =  $request->input('link');
         $slider->status           =  $request->input('status');
         $slider->slider_link      =  $request->input('slider_link');
-        $slider->caption1         =  $request->input('caption1');
-        $slider->caption2         =  $request->input('caption2');
-        $slider->link2            =  $request->input('link2');
-        $slider->button2          =  $request->input('button2');
         $oldimage                 =  $slider->image;
 
         if (!empty($request->file('image'))){
             $image               =  $request->file('image');
             $name1               = uniqid().'_'.$image->getClientOriginalName();
             $path                = base_path().'/public/images/sliders/';
-            $moved               = Image::make($image->getRealPath())->resize(995, 650)->orientate()->save($path.$name1);
+            $moved               = Image::make($image->getRealPath())->resize(1920, 884)->orientate()->save($path.$name1);
             if ($moved){
                 $slider->image = $name1;
                 if (!empty($oldimage) && file_exists(public_path().'/images/sliders/'.$oldimage)){

@@ -59,7 +59,7 @@
                         <div class="card-body">
                             <div class="form-group mb-3">
                                 <label>Heading <span class="text-muted text-danger">*</span></label>
-                                <input type="text" maxlength="35" class="form-control" name="heading" required>
+                                <input type="text" maxlength="25" class="form-control" name="heading" required>
                                 <div class="invalid-feedback">
                                     Please enter the slider heading.
                                 </div>
@@ -67,67 +67,37 @@
 
                             <div class="form-group mb-3">
                                 <label>Sub Heading <span class="text-muted text-danger">*</span></label>
-                                <input type="text" maxlength="45" class="form-control" name="subheading" required>
+                                <input type="text" maxlength="20" class="form-control" name="subheading" required>
                                 <div class="invalid-feedback">
                                     Please enter the slider subheading.
                                 </div>
                             </div>
-                            <div class="form-group mb-3 mt-3">
-                                <label>Status</label>
-                                <br>
-                                <select class="form-control select select2" name="status" required>
-                                    <option disabled>Select Status</option>
-                                    <option value="active" selected>Active</option>
-                                    <option value="deactive">Deactive</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select the status.
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="card ctm-border-radius shadow-sm grow flex-fill">
-                        <div class="card-header">
-                            <h4 class="card-title mb-0">
-                                Button details
-                            </h4>
-                        </div>
-                        <div class="card-body">
 
                             <div class="form-group mb-3">
-                                <label>Button 1 text <span class="text-muted text-danger">*</span></label>
+                                <label>Button text <span class="text-muted text-danger">*</span></label>
                                 <input type="text" maxlength="20" class="form-control" name="button" required>
                                 <div class="invalid-feedback">
                                     Please enter the button text.
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label>Button 1 link <span class="text-muted text-danger">*</span></label>
+                                <label>Button link <span class="text-muted text-danger">*</span></label>
                                 <input type="text" class="form-control" name="link" required>
                                 <div class="invalid-feedback">
                                     Please enter the button link.
                                 </div>
                             </div>
-
                             <div class="form-group mb-3">
-                                <label>Button 2 text</label>
-                                <input type="text" maxlength="20" class="form-control" name="button2">
+                                <label>Video Link (youtube/vimeo) </label>
+                                <input type="text" class="form-control" name="slider_link">
                                 <div class="invalid-feedback">
-                                    Please enter the button 2 text.
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label>Button 2 link </label>
-                                <input type="text"  class="form-control" name="link2">
-                                <div class="invalid-feedback">
-                                    Please enter the button 2 link.
+                                    Please enter youtube/vimeo link.
                                 </div>
                             </div>
 
                         </div>
                     </div>
+
                 </div>
                 <div class="col-md-5">
                     <div class="card ctm-border-radius shadow-sm grow flex-fill">
@@ -143,7 +113,7 @@
                                         id="profile-foreground-img-file-input" onchange="loadbasicFile('profile-foreground-img-file-input','current-img',event)" name="image" required
                                         class="profile-foreground-img-file-input" >
 
-                                <figcaption class="figure-caption">*use image minimum of 995px x 650px </figcaption>
+                                <figcaption class="figure-caption">*use image minimum of 1920px x 884px </figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>
@@ -151,42 +121,27 @@
                                     <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
                                 </label>
                             </div>
+
+                            <div class="form-group mb-3 mt-3">
+                                <label>Status</label>
+                                <br>
+                                <select class="form-control select select2" name="status" required>
+                                    <option disabled>Select Status</option>
+                                    <option value="active" selected>Active</option>
+                                    <option value="deactive">Deactive</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select the status.
+                                </div>
+                            </div>
+
+
                         </div>
+
 
                     </div>
 
-                    <div class="card ctm-border-radius shadow-sm grow flex-fill">
-                        <div class="card-header">
-                            <h4 class="card-title mb-0">
-                                Extra details
-                            </h4>
-                        </div>
-                        <div class="card-body">
 
-                            <div class="form-group mb-3">
-                                <label> Image caption 1</label>
-                                <input type="text" maxlength="12" class="form-control" name="caption1">
-                                <div class="invalid-feedback">
-                                    Please enter the image caption 1.
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label>Image caption 2 </label>
-                                <input type="text" maxlength="12" class="form-control" name="caption2">
-                                <div class="invalid-feedback">
-                                    Please enter the image caption 2.
-                                </div>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label>Video Link (youtube/vimeo) </label>
-                                <input type="text" class="form-control" name="slider_link">
-                                <div class="invalid-feedback">
-                                    Please enter youtube/vimeo link.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="text-center mt-2 mb-5">
                     <button type="submit" class="btn btn-success w-sm mt-4" >Add Slider</button>
@@ -295,14 +250,14 @@
 
                             <div class="form-group mb-3">
                                 <label>Heading </label>
-                                <input type="text" maxlength="45" class="form-control" name="heading" id="heading" required>
+                                <input type="text" maxlength="25" class="form-control" name="heading" id="heading" required>
                                 <div class="invalid-feedback">
                                     Please enter the slider heading.
                                 </div>
                             </div>
                             <div class="form-group mb-3">
                                 <label>Sub Heading </label>
-                                <input type="text" maxlength="25" class="form-control" name="subheading" id="subheading" required>
+                                <input type="text" maxlength="20" class="form-control" name="subheading" id="subheading" required>
                                 <div class="invalid-feedback">
                                     Please enter the slider subheading.
                                 </div>
@@ -345,7 +300,7 @@
                                         id="profile-foreground-img-file" onchange="loadbasicFile('profile-foreground-img-file','current-edit-img',event)" name="image"
                                         class="profile-foreground-img-file-input" >
 
-                                <figcaption class="figure-caption">*use image minimum of 995px x 650px </figcaption>
+                                <figcaption class="figure-caption">*use image minimum of 1920px x 884px </figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>

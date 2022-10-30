@@ -15,10 +15,6 @@ return new class extends Migration
     {
         Schema::table('sliders', function (Blueprint $table) {
             $table->text('slider_link')->after('status')->nullable();
-            $table->string('caption2')->after('status')->nullable();
-            $table->string('caption1')->after('status')->nullable();
-            $table->string('link2')->after('status')->nullable();
-            $table->string('button2')->after('status')->nullable();
         });
     }
 
