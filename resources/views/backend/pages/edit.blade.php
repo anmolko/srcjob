@@ -239,21 +239,14 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-12 mb-2">
                                             <div class="form-group">
-                                                <label>Select number of Tab List <span class="text-muted text-danger">*</span></label>
-                                                <select class="form-control select" name="list_number_2" id="list_number_2">
-                                                    <option  {{($list2 == null) ? "disabled selected":"disabled"}}>Select Number of Tab List</option>
-                                                    <option value="2" {{($list2 =="2") ? "selected":""}}>Two</option>
-                                                    <option value="4" {{($list2 =="4") ? "selected":""}}>Four</option>
-                                                    <option value="6" {{($list2 =="6") ? "selected":""}}>Six</option>
-                                                    <option value="8" {{($list2 =="8") ? "selected":""}}>Eight</option>
-                                                    <option value="10" {{($list2 =="10") ? "selected":""}}>Ten</option>
-                                                </select>
-                                                <input type="hidden" name="list_2_id" value="{{$list2_id}}">
+                                                <label>Number of Tab List <span class="text-muted text-danger">*</span></label>
+                                                <input type="number" min="1" class="form-control" name="list_number_2" value="{{$list2}}">
                                                 <div class="invalid-feedback">
-                                                    Please enter the Accordion Tab number.
+                                                    Please enter the Accordion tab number.
                                                 </div>
+                                                <input type="hidden" name="list_2_id" value="{{$list2_id}}">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -303,13 +296,13 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
+                                            <span class="ctm-text-sm text-warning">* using this element will create a inner page to display individual list data. Use only when big informations are needed to be showcased</span>
+
                                             <label class="image-checkbox {{(in_array('slider_list', $sections) ? "image-checkbox-checked":"")}}">
                                                 <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/list_option_1.png')}}" width="100%"/>
                                                 <input type="checkbox" name="section[]" id="list_option_1.png" value="slider_list" {{(in_array('slider_list', $sections) ? "checked":"")}} />
                                                 <i class="ri ri-check-line hidden"></i>
                                             </label>
-                                            <span class="ctm-text-sm text-warning">* using this element will create a inner page to display individual list data. Use only when big informations are needed to be showcased</span>
-
                                         </div>
                                     </div>
 

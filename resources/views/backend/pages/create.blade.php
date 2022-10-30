@@ -253,20 +253,11 @@
                                     <div class="row">
 
                                         <div class="col-md-12 mb-2">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Select number of Tab List <span class="text-muted text-danger">*</span></label>
-                                                    <select class="form-control select" name="list_number_2" id="list_number_2">
-                                                        <option disabled>Select Number of Tab List</option>
-                                                        <option value="2" selected>Two</option>
-                                                        <option value="4">Four</option>
-                                                        <option value="6">Six</option>
-                                                        <option value="8">Eight</option>
-                                                        <option value="10">Ten</option>
-                                                    </select>
-                                                    <div class="invalid-feedback">
-                                                        Please enter the Accordion tab number.
-                                                    </div>
+                                            <div class="form-group">
+                                                <label>Number of Tab List <span class="text-muted text-danger">*</span></label>
+                                                <input type="number" min="1" class="form-control" name="list_number_2" >
+                                                <div class="invalid-feedback">
+                                                    Please enter the Accordion tab number.
                                                 </div>
                                             </div>
                                         </div>
@@ -322,8 +313,10 @@
                                                 <input type="checkbox" name="section[]" value="slider_list" id="list_option_1.png" />
                                                 <i class="ri ri-check-line hidden"></i>
                                             </label>
-                                            <span class="ctm-text-sm text-warning">* using this element will create a inner page to display individual list data. Use only when big information are needed to be showcased. </span>
+
                                         </div>
+                                        <span class="ctm-text-sm text-warning">* using this element will create a inner page to display individual list data. Use only when big information are needed to be showcased. </span>
+
                                     </div>
 
                                 </div>

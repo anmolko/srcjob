@@ -5,7 +5,7 @@
 
     <style>
         .ck-editor__editable_inline {
-            min-height: 150px !important;
+            min-height: 450px !important;
         }
         .add-disabled{pointer-events: none; opacity: 0.7;}
 
@@ -154,7 +154,7 @@
                                             <div class="card-body">
                                                 <div class="form-group mb-3">
                                                     <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="heading" value="{{@$basic_elements->heading}}" maxlength="32" required>
+                                                    <input type="text" class="form-control" name="heading" value="{{@$basic_elements->heading}}" maxlength="30" required>
                                                     <input type="hidden" class="form-control" value="{{$key}}" name="page_section_id" required>
                                                     <input type="hidden" class="form-control" value="{{$value}}" name="section_name" required>
                                                     <div class="invalid-feedback">
@@ -164,14 +164,14 @@
 
                                                 <div class="form-group mb-3">
                                                     <label>Sub Heading </label>
-                                                    <input type="text" class="form-control" maxlength="15" name="subheading" value="{{@$basic_elements->subheading}}">
+                                                    <input type="text" class="form-control" maxlength="22" name="subheading" value="{{@$basic_elements->subheading}}">
                                                     <div class="invalid-feedback">
                                                         Please enter the basic section Sub heading.
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3">
-                                                    <label>Description <span class="text-muted text-danger">* write 570 characters only</span></label>
-                                                    <textarea class="form-control" maxlength="570" rows="8" name="description" id="basic_editor" required>{!! @$basic_elements->description !!}</textarea>
+                                                    <label>Description <span class="text-muted text-danger">* write 725 characters only</span></label>
+                                                    <textarea class="form-control" maxlength="725" rows="8" name="description" id="basic_editor" required>{!! @$basic_elements->description !!}</textarea>
                                                     <div class="invalid-feedback">
                                                         Please write the small summary for basic section.
                                                     </div>
@@ -210,7 +210,7 @@
                                                             id="basic-image" onchange="loadbasicFile('basic-image','current-basic-img',event)" name="image" {{(@$basic_elements->id !== null) ? "":"required" }}
                                                             class="profile-foreground-img-file-input" >
 
-                                                    <figcaption class="figure-caption">Banner image for current basic section. (SIZE: 630 x 480px)</figcaption>
+                                                    <figcaption class="figure-caption">Banner image for current basic section. (SIZE: 475 x 683px)</figcaption>
                                                     <div class="invalid-feedback" >
                                                         Please select a image.
                                                     </div>
@@ -257,7 +257,7 @@
                                                  <div class="card-body">
                                                      <div class="form-group mb-3">
                                                          <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                         <input type="text" class="form-control" name="heading" value="{{@$map_descp->heading}}" maxlength="20" required>
+                                                         <input type="text" class="form-control" name="heading" value="{{@$map_descp->heading}}" maxlength="30" required>
                                                          <input type="hidden" class="form-control" value="{{$key}}" name="page_section_id" required>
                                                          <input type="hidden" class="form-control" value="{{$value}}" name="section_name" required>
                                                          <div class="invalid-feedback">
@@ -275,25 +275,12 @@
 
                                                      <div class="form-group mb-3">
                                                          <label>Description <span class="text-muted text-danger">*</span></label>
-                                                         <textarea class="form-control" maxlength="700" rows="6" name="description" required>{{@$map_descp->description}}</textarea>
+                                                         <textarea class="form-control" maxlength="750" rows="6" name="description" required>{{@$map_descp->description}}</textarea>
                                                          <div class="invalid-feedback">
                                                              Please enter the description.
                                                          </div>
                                                      </div>
-                                                     <div class="form-group mb-3">
-                                                         <label>Button Text </label>
-                                                         <input type="text" maxlength="15" class="form-control" value="{{@$map_descp->button}}" name="button">
-                                                         <div class="invalid-feedback">
-                                                             Please enter the button text.
-                                                         </div>
-                                                     </div>
-                                                     <div class="form-group mb-3">
-                                                         <label>Button Link </label>
-                                                         <input type="text" class="form-control" value="{{@$map_descp->button_link}}" name="button_link">
-                                                         <div class="invalid-feedback">
-                                                             Please enter the button link.
-                                                         </div>
-                                                     </div>
+
 
                                                      <div class="form-group mb-3">
                                                          <label>Generated Map Code </label>
@@ -325,7 +312,7 @@
                                      @endif
 
                                      <div class="row" id="call-action1-form-ajax">
-                                         <div class="col-md-12">
+                                         <div class="col-md-8">
                                              <div class="card ctm-border-radius shadow-sm flex-fill">
                                                  <div class="card-header">
                                                      <h4 class="card-title mb-0">
@@ -335,7 +322,7 @@
                                                  <div class="card-body">
                                                      <div class="form-group mb-3">
                                                          <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                         <input type="text" class="form-control" maxlength="35" name="heading" value="{{@$call1_elements->heading}}" required>
+                                                         <input type="text" class="form-control" maxlength="30" name="heading" value="{{@$call1_elements->heading}}" required>
                                                          <div class="invalid-feedback">
                                                              Please enter the call action section heading.
                                                          </div>
@@ -351,7 +338,7 @@
                                                      </div>
                                                      <div class="form-group mb-3">
                                                          <label>Button Text </label>
-                                                         <input type="text" maxlength="18" class="form-control" value="{{@$call1_elements->button}}" name="button">
+                                                         <input type="text" maxlength="20" class="form-control" value="{{@$call1_elements->button}}" name="button">
                                                          <div class="invalid-feedback">
                                                              Please enter the button text.
                                                          </div>
@@ -366,6 +353,33 @@
                                                  </div>
                                              </div>
                                          </div>
+                                         <div class="col-md-4">
+                                             <div class="card ctm-border-radius shadow-sm flex-fill">
+                                                 <div class="card-header">
+                                                     <h4 class="card-title mb-0">
+                                                         Call Action Section Image <span class="text-muted text-danger">*</span>
+                                                     </h4>
+                                                 </div>
+                                                 <div class="card-body">
+
+                                                     <div>
+                                                         <img  id="current-callaction-img"  src="<?php if(!empty(@$call1_elements->image)){ echo '/images/section_elements/basic_section/'.@$call1_elements->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
+                                                         <input  type="file" accept="image/png, image/jpeg" hidden
+                                                                 id="callaction-image" onchange="loadbasicFile('callaction-imagee','current-callaction-img',event)" name="image" {{(@$call1_elements->id !== null) ? "":"required" }}
+                                                                 class="profile-foreground-img-file-input" >
+
+                                                         <figcaption class="figure-caption">Image for current section. (SIZE: 230 x 235px)</figcaption>
+                                                         <div class="invalid-feedback" >
+                                                             Please select a image.
+                                                         </div>
+                                                         <label for="callaction-image" class="profile-photo-edit btn btn-light feature-image-button">
+                                                             <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
+                                                         </label>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </div>
+
                                      </div>
                                      <div class="text-center mt-3 mb-3" id="call-action1-form-button">
                                          <button id="call-action-button-submit" class="btn btn-success w-sm">
@@ -394,7 +408,7 @@
                                                      <div class="card-body">
                                                          <div class="form-group mb-3">
                                                              <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                             <input type="text" maxlength="50" class="form-control" name="heading" value="{{@$bgimage_elements->heading}}" required>
+                                                             <input type="text" maxlength="60" class="form-control" name="heading" value="{{@$bgimage_elements->heading}}" required>
                                                              <input type="hidden" class="form-control" value="{{$key}}" name="page_section_id" required>
                                                              <input type="hidden" class="form-control" value="{{$value}}" name="section_name" required>
                                                              <div class="invalid-feedback">
@@ -403,8 +417,16 @@
                                                          </div>
 
                                                          <div class="form-group mb-3">
+                                                             <label>Sub Heading </label>
+                                                             <input type="text" class="form-control" maxlength="55" name="subheading" value="{{@$bgimage_elements->subheading}}">
+                                                             <div class="invalid-feedback">
+                                                                 Please enter the basic section Sub heading.
+                                                             </div>
+                                                         </div>
+
+                                                         <div class="form-group mb-3">
                                                              <label>Description <span class="text-muted text-danger">*</span></label>
-                                                             <textarea class="form-control" maxlength="760" rows="7" name="description" required>{{@$bgimage_elements->description}}</textarea>
+                                                             <textarea class="form-control" maxlength="850" rows="9" name="description" required>{{@$bgimage_elements->description}}</textarea>
                                                              <div class="invalid-feedback">
                                                                  Please write the short description.
                                                              </div>
@@ -436,7 +458,7 @@
                                                                      id="background-image" onchange="loadbasicFile('background-image','current-backgroundss-img',event)" name="image" {{(@$bgimage_elements !=="")? "":"required"}}
                                                                      class="profile-foreground-img-file-input" >
 
-                                                             <figcaption class="figure-caption">Banner image for current background section. (SIZE: 630 x 595px)</figcaption>
+                                                             <figcaption class="figure-caption">Banner image for current background section. (SIZE: 1920 x 1200px)</figcaption>
                                                              <div class="invalid-feedback" >
                                                                  Please select a image.
                                                              </div>
@@ -504,7 +526,7 @@
                                                                      <div class="card ctm-border-radius shadow-sm flex-fill">
                                                                          <div class="card-header">
                                                                              <h4 class="card-title mb-0">
-                                                                                 Icon Image
+                                                                                 Image
                                                                              </h4>
                                                                          </div>
                                                                          <div class="card-body">
@@ -514,7 +536,7 @@
                                                                                          id="icons-image0" onchange="loadbasicFile('icons-image0','current-icon-img0',event)" name="image[]"
                                                                                          class="profile-foreground-img-file-input" >
 
-                                                                                 <figcaption class="figure-caption">Image for icon. (SIZE: 60 x 60px)</figcaption>
+                                                                                 <figcaption class="figure-caption">Image for first card. (SIZE: 160 x 180px)</figcaption>
                                                                                  <div class="invalid-feedback" >
                                                                                      Please select a image.
                                                                                  </div>
@@ -561,7 +583,7 @@
                                                                      <div class="card ctm-border-radius shadow-sm flex-fill">
                                                                          <div class="card-header">
                                                                              <h4 class="card-title mb-0">
-                                                                                 Icon Image
+                                                                                 Image
                                                                              </h4>
                                                                          </div>
                                                                          <div class="card-body">
@@ -571,7 +593,7 @@
                                                                                          id="icons-image1" onchange="loadbasicFile('icons-image1','current-icon-img1',event)" name="image[]"
                                                                                          class="profile-foreground-img-file-input" >
 
-                                                                                 <figcaption class="figure-caption">Image for icon. (SIZE: 60 x 60px)</figcaption>
+                                                                                 <figcaption class="figure-caption">Image for box2. (SIZE: 245 x 250px)</figcaption>
                                                                                  <div class="invalid-feedback" >
                                                                                      Please select a image.
                                                                                  </div>
@@ -626,12 +648,12 @@
                                                                          </div>
                                                                          <div class="card-body">
                                                                              <div>
-                                                                                 <img  id="current-icon-img2"  src="<?php if(!empty(@$flash_elements[0]->image)){ echo '/images/section_elements/list_1/'.@$flash_elements[0]->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
+                                                                                 <img  id="current-icon-img2"  src="<?php if(!empty(@$flash_elements[2]->image)){ echo '/images/section_elements/list_1/'.@$flash_elements[2]->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
                                                                                  <input  type="file" accept="image/png, image/jpeg" hidden
                                                                                          id="icons-image2" onchange="loadbasicFile('icons-image2','current-icon-img2',event)" name="image[]"
                                                                                          class="profile-foreground-img-file-input" >
 
-                                                                                 <figcaption class="figure-caption">Image for icon. (SIZE: 60 x 60px)</figcaption>
+                                                                                 <figcaption class="figure-caption">Image for icon. (SIZE: 370 x 410px)</figcaption>
                                                                                  <div class="invalid-feedback" >
                                                                                      Please select a image.
                                                                                  </div>
@@ -677,16 +699,9 @@
                                                  <div class="card-body">
                                                      <div class="form-group mb-3">
                                                          <label>Heading </label>
-                                                         <input type="text" maxlength="100" class="form-control" value="{{@$header_descp_elements->heading}}" name="heading">
+                                                         <input type="text" maxlength="40" class="form-control" value="{{@$header_descp_elements->heading}}" name="heading">
                                                          <div class="invalid-feedback">
                                                              Please enter the heading.
-                                                         </div>
-                                                     </div>
-                                                     <div class="form-group mb-3">
-                                                         <label>Subheading</label>
-                                                         <input type="text" maxlength="100" class="form-control" value="{{@$header_descp_elements->subheading}}" name="subheading">
-                                                         <div class="invalid-feedback">
-                                                             Please enter the sub heading.
                                                          </div>
                                                      </div>
                                                      <div class="form-group mb-3">
@@ -729,30 +744,16 @@
                                                      <div class="card-body">
                                                          <div class="form-group mb-3">
                                                              <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                             <input type="text" class="form-control" maxlength="35" name="heading[]" value="{{@$accordian2_elements[0]->heading}}" required>
+                                                             <input type="text" class="form-control" maxlength="30" name="heading[]" value="{{@$accordian2_elements[0]->heading}}" required>
                                                              <div class="invalid-feedback">
                                                                  Please enter the heading.
                                                              </div>
                                                          </div>
                                                          <div class="form-group mb-3">
                                                              <label>Sub Heading <span class="text-muted text-danger">*</span></label>
-                                                             <input type="text" class="form-control" maxlength="15" name="subheading[]" value="{{@$accordian2_elements[0]->subheading}}" required>
+                                                             <input type="text" class="form-control" maxlength="30" name="subheading[]" value="{{@$accordian2_elements[0]->subheading}}" required>
                                                              <div class="invalid-feedback">
                                                                  Please enter the sub heading.
-                                                             </div>
-                                                         </div>
-                                                         <div class="form-group mb-3">
-                                                             <label>Button Text </label>
-                                                             <input type="text" maxlength="15" class="form-control" value="{{@$accordian2_elements[0]->button}}" name="button[]">
-                                                             <div class="invalid-feedback">
-                                                                 Please enter the button text.
-                                                             </div>
-                                                         </div>
-                                                         <div class="form-group mb-3">
-                                                             <label>Button Link </label>
-                                                             <input type="text" class="form-control" value="{{@$accordian2_elements[0]->button_link}}" name="button_link[]">
-                                                             <div class="invalid-feedback">
-                                                                 Please enter the button link.
                                                              </div>
                                                          </div>
                                                      </div>
@@ -826,14 +827,14 @@
                                                      <div class="card-body">
                                                          <div class="form-group mb-3">
                                                              <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                             <input type="text" class="form-control" name="heading[]" value="{{@$slider_list_elements[0]->heading}}" required>
+                                                             <input type="text" class="form-control" maxlength="25" name="heading[]" value="{{@$slider_list_elements[0]->heading}}" required>
                                                              <div class="invalid-feedback">
                                                                  Please enter the heading.
                                                              </div>
                                                          </div>
                                                          <div class="form-group mb-3">
                                                              <label>Sub Heading <span class="text-muted text-danger">*</span></label>
-                                                             <input type="text" class="form-control" name="description[]" value="{{@$slider_list_elements[0]->description}}" required>
+                                                             <input type="text" class="form-control" name="description[]" maxlength="15" value="{{@$slider_list_elements[0]->description}}" required>
                                                              <div class="invalid-feedback">
                                                                  Please enter the sub heading.
                                                              </div>
@@ -894,7 +895,7 @@
                                                                                  id="sliderlist-{{$i}}-image" onchange="loadbasicFile('sliderlist-{{$i}}-image','current-sliderlist-{{$i}}-img',event)" name="list_image[]" {{(@$slider_list_elements[$i-1]->id !== null) ? "":"required" }}
                                                                                  class="profile-foreground-img-file-input" >
 
-                                                                         <figcaption class="figure-caption">Banner image for current slider. (SIZE: 850px X 560px)</figcaption>
+                                                                         <figcaption class="figure-caption">Banner image for current slider. (SIZE: 755px X 485px)</figcaption>
                                                                          <div class="invalid-feedback" >
                                                                              Please select a image.
                                                                          </div>
@@ -1022,42 +1023,25 @@
                                                         <div id="accor_borderedExamplecollapse{{$i}}" class="accordion-collapse collapse {{($i==1) ? 'show':''}} " aria-labelledby="processelect-heading-{{$i}}" data-bs-parent="#accordionBordered">
                                                             <div class="accordion-body">
                                                                 <div class="row">
-                                                                    <div class="col-md-9">
+                                                                    <div class="col-md-12">
                                                                         <div class="form-group mb-3">
                                                                             <label>Heading </label>
                                                                             <input type="hidden" class="form-control" value="{{$key}}"    name="page_section_id" required>
                                                                             <input type="hidden" class="form-control" value="{{$value}}"  name="section_name" required>
                                                                             <input type="hidden" class="form-control" value="{{$process_num}}" name="list_number_3_process_num" required>
                                                                             <input type="hidden" class="form-control" value="{{@$process_elements[$i-1]->id}}" name="id[]">
-                                                                            <input type="text" class="form-control" name="list_header[]" maxlength="22" value="{{@$process_elements[$i-1]->list_header}}" >
+                                                                            <input type="text" class="form-control" name="list_header[]" maxlength="30" value="{{@$process_elements[$i-1]->list_header}}" >
                                                                             <div class="invalid-feedback">
                                                                                 Please enter the heading.
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group mb-3">
                                                                                     <label>Description <span class="text-muted text-danger">*</span></label>
-                                                                                    <textarea class="form-control" maxlength="190" rows="8" name="list_description[]" required>{{@$process_elements[$i-1]->list_description}}</textarea>
+                                                                                    <textarea class="form-control" maxlength="445" rows="8" name="list_description[]" required>{{@$process_elements[$i-1]->list_description}}</textarea>
                                                                                     <div class="invalid-feedback">
                                                                                         Please write the description.
                                                                                     </div>
                                                                                 </div>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-
-                                                                        <div>
-                                                                            <img  id="current-processelect-{{$i}}-img"  src="<?php if(!empty(@$process_elements[$i-1]->list_image)){ echo '/images/section_elements/list_1/'.@$process_elements[$i-1]->list_image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
-                                                                            <input  type="file" accept="image/png, image/jpeg" hidden
-                                                                                    id="processelect-{{$i}}-image" onchange="loadbasicFile('processelect-{{$i}}-image','current-processelect-{{$i}}-img',event)" name="list_image[]" {{(@$process_elements[$i-1]->id !== null) ? "":"required" }}
-                                                                                    class="profile-foreground-img-file-input" >
-
-                                                                            <figcaption class="figure-caption"> image for current box. (SIZE: 60px X 60px)</figcaption>
-                                                                            <div class="invalid-feedback" >
-                                                                                Please select a image.
-                                                                            </div>
-                                                                            <label for="processelect-{{$i}}-image" class="profile-photo-edit btn btn-light feature-image-button">
-                                                                                <i class="ri-image-edit-line align-bottom me-1"></i> Add Icon Image
-                                                                            </label>
-                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>

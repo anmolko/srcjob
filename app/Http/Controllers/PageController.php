@@ -64,7 +64,7 @@ class PageController extends Controller
             $sections = $request->input('sorted_sections');
             $pos = $request->position;
             $page = Page::latest()->first();
-            $listval2 = ($request->input('list_number_2') == null) ? 2 : $request->input('list_number_2');
+            $listval2 = ($request->input('list_number_2') == null) ? 1 : $request->input('list_number_2');
             $listval3 = ($request->input('list_number_3') == null) ? 3 : $request->input('list_number_3');
             $process_sel = ($request->input('list_number_3_process_sel') == null) ? 3 : $request->input('list_number_3_process_sel');
 
@@ -240,7 +240,7 @@ class PageController extends Controller
             $status = $page->update();
 
             $listval1 = ($request->input('list_number_1') == null) ? 1 : $request->input('list_number_1');
-            $listval2 = ($request->input('list_number_2') == null) ? 2 : $request->input('list_number_2');
+            $listval2 = ($request->input('list_number_2') == null) ? 1 : $request->input('list_number_2');
             $listval3 = ($request->input('list_number_3') == null) ? 3 : $request->input('list_number_3');
             $listval4 = ($request->input('list_number_4') == null) ? 3 : $request->input('list_number_4');
             $slider_type = ($request->input('list_number_1_slider') == null) ? 'slider_list' : $request->input('list_number_1_slider');
