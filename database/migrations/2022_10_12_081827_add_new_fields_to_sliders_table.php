@@ -27,10 +27,6 @@ return new class extends Migration
     {
         Schema::table('sliders', function (Blueprint $table) {
             $table->dropColumn('slider_link');
-            $table->dropColumn('caption2');
-            $table->dropColumn('caption1');
-            $table->dropColumn('link2');
-            $table->dropColumn('button2');
 
         });
     }
