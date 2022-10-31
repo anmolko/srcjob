@@ -314,21 +314,8 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Select number of box description <span class="text-muted text-danger">*</span></label>
-                                                <select class="form-control select" name="list_number_3_process_sel" id="list_number_3_process_sel">
-                                                    <option {{($process_number == null) ? "disabled selected":"disabled"}}>Select Number of List</option>
-                                                    <option value="2" {{($process_number =="2") ? "selected":""}}>Two</option>
-                                                    <option value="4" {{($process_number =="4") ? "selected":""}}>Four</option>
-                                                </select>
-                                                <input type="hidden" name="process_sel_id" value="{{$process_id}}">
-                                                <span class="ctm-text-sm text-warning">* Please choose the list numbers in odd format such as 3 or 6.</span>
-                                                <div class="invalid-feedback">
-                                                    Please enter the list number.
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <input type="hidden" name="process_sel_id" value="{{$process_id}}">
+                                        <input type="hidden" name="list_number_3_process_sel" value="3">
                                         <div class="col-md-12">
                                             <label class="image-checkbox {{(in_array('small_box_description', $sections) ? "image-checkbox-checked":"")}}">
                                                 <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/small_box_description.png')}}" width="100%"/>

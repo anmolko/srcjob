@@ -262,36 +262,6 @@
                                     Please enter the slider subheading.
                                 </div>
                             </div>
-                            <div class="form-group mb-3">
-                                <label>Button 1 text</label>
-                                <input type="text" class="form-control" name="button" id="button" required>
-                                <div class="invalid-feedback">
-                                    Please enter the category button.
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label>Button 1 link </label>
-                                <input type="text" class="form-control" name="link" id="link" required>
-                                <div class="invalid-feedback">
-                                    Please enter the category name.
-                                </div>
-                            </div>
-
-
-                            <div class="form-group mb-3">
-                                <label>Button 2 text</label>
-                                <input type="text" class="form-control" name="button2" id="button2" required>
-                                <div class="invalid-feedback">
-                                    Please enter the category button.
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label>Button 2 link </label>
-                                <input type="text" class="form-control" name="link2" id="link2" required>
-                                <div class="invalid-feedback">
-                                    Please enter the category name.
-                                </div>
-                            </div>
                         </div>
                         <div class="col-md-6">
                             <div style="margin: auto;width: 60%;">
@@ -308,6 +278,30 @@
                                     <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
                                 </label>
                             </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                <label>Button text</label>
+                                <input type="text" class="form-control" name="button" id="button" required>
+                                <div class="invalid-feedback">
+                                    Please enter the category button.
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Button link </label>
+                                <input type="text" class="form-control" name="link" id="link" required>
+                                <div class="invalid-feedback">
+                                    Please enter the category name.
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Video Link (youtube/vimeo) </label>
+                                <input type="text" class="form-control" name="slider_link" id="slider_link">
+                                <div class="invalid-feedback">
+                                    Please enter youtube/vimeo link.
+                                </div>
+                            </div>
                             <div class="form-group mb-3 mt-3">
                                 <label>Status</label>
                                 <select class="form-control" name="status" id="sliderstatus" required>
@@ -319,39 +313,8 @@
                                     Please select the status.
                                 </div>
                             </div>
-
-                            <div class="form-group mb-3">
-                                <label> Image caption 1</label>
-                                <input type="text" maxlength="12" class="form-control" name="caption1" id="caption1">
-                                <div class="invalid-feedback">
-                                    Please enter the image caption 1.
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label>Image caption 2 </label>
-                                <input type="text" maxlength="12" class="form-control" name="caption2" id="caption2">
-                                <div class="invalid-feedback">
-                                    Please enter the image caption 2.
-                                </div>
-                            </div>
-
-
                         </div>
-
-                        <div class="col-md-12">
-                            <div class="form-group mb-3">
-                                <label>Video Link (youtube/vimeo) </label>
-                                <input type="text" class="form-control" name="slider_link" id="slider_link">
-                                <div class="invalid-feedback">
-                                    Please enter youtube/vimeo link.
-                                </div>
-                            </div>
-                        </div>
-
-
                     </div>
-
-
 
                     <div class="text-center mb-3">
                         <button type="submit" class="btn btn-success w-sm mt-4">Update</button>
