@@ -9118,6 +9118,10 @@ ul {
   outline: none;
 }
 
+div#msgSubmit {
+  margin-top: 20px;
+}
+
 .contact-form__input-box textarea {
   height: 150px;
   width: 100%;

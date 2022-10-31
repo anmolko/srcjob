@@ -394,11 +394,11 @@ class FrontController extends Controller
                 'email'        =>$request->input('email'),
                 'subject'        =>$request->input('subject'),
                 'customer_phone'        =>$request->input('phone'),
-                'address'        =>ucwords($theme_data->address),
-                'site_email'        =>ucwords($theme_data->email),
-                'site_name'        =>ucwords($theme_data->website_name),
-                'phone'        =>ucwords($theme_data->phone),
-                'logo'        =>ucwords($theme_data->logo),
+                'address'        =>ucwords(@$theme_data->address),
+                'site_email'        =>ucwords(@$theme_data->email),
+                'site_name'        =>ucwords(@$theme_data->website_name),
+                'phone'        =>ucwords(@$theme_data->phone),
+                'logo'        =>ucwords(@$theme_data->logo),
             );
 //             Mail::to('surajmzn75@gmail.com')->send(new ContactDetail($data));
 

@@ -309,9 +309,13 @@
         message: {
           required: true
         },
+        phone: {
+          required: true
+        },
         subject: {
           required: true
         }
+        
       },
       submitHandler: function (form) {
         // sending value with ajax request
@@ -323,12 +327,42 @@
             $(form).find('input[type="text"]').val("");
             $(form).find('input[type="email"]').val("");
             $(form).find("textarea").val("");
+           
+              if (response == "success"){
+                  formSuccess();
+              } else {
+                  formError();
+                  submitMSG(false,text);
+              }
           }
         );
         return false;
       }
     });
+
+    
   }
+
+  
+  function formSuccess(){
+    $("#contactForm")[0].reset();
+    submitMSG(true, "Message Submitted!")
+}
+
+function formError(){
+    $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+        $(this).removeClass();
+    });
+}
+
+function submitMSG(valid, msg){
+    if(valid){
+        var msgClasses = "h4 text-left tada animated text-success";
+    } else {
+        var msgClasses = "h4 text-left text-danger";
+    }
+    $("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
+}
 
   // mailchimp form
   if ($(".mc-form").length) {
