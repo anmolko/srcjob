@@ -2,77 +2,77 @@
 @section('title') Services @endsection
 @section('css')
     <style>
-           
-    .corpkit-content > .corpkit-content-inner {
-        padding-top: 0;
-        padding-bottom: 0;
-    }
+        .blog-page__pagination {
+            text-align: center;
+        }
 </style>
 @endsection
 @section('content')
 
 
-        <!-- Page Banner Start -->
-        <section class="page-banner-area pt-245 rpt-150 pb-170 rpb-100 rel z-1 bgc-lighter text-center">
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}});">
+            </div>
+            <div class="page-header__shape-one float-bob-x-2"></div>
+            <div class="page-header__shape-2 float-bob-y">
+                <img src="{{asset('assets/frontend/images/shapes/page-header-shape-2.png')}}" alt="">
+            </div>
+            <div class="page-header__shape-3 float-bob-x">
+                <img src="{{asset('assets/frontend/images/shapes/page-header-shape-3.png')}}" alt="">
+            </div>
+            <div class="page-header__shape-4 float-bob-y">
+                <img src="{{asset('assets/frontend/images/shapes/page-header-shape-4.png')}}" alt="">
+            </div>
             <div class="container">
-                <div class="banner-inner rpt-10">
-                    <h1 class="page-title wow fadeInUp delay-0-2s">Our Services</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center wow fadeInUp delay-0-4s">
-                            <li class="breadcrumb-item"><a href="/">home</a></li>
-                            <li class="breadcrumb-item active">Services </li>
-                        </ol>
-                    </nav>
+                <div class="page-header__inner text-left">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="/">Home</a></li>
+                        <li>Services</li>
+                    </ul>
+                    <h2>Our Services</h2>
                 </div>
             </div>
-            <div class="banner-shapes">
-                <div class="circle wow zoomInLeft delay-0-2s" data-wow-duration="2s"></div>
-                <img class="shape-one" src="{{asset('assets/frontend/images/shapes/hero-shape1.png')}}" alt="Shape">
-                <img class="shape-two" src="{{asset('assets/frontend/images/shapes/hero-shape2.png')}}" alt="Shape">
-            </div>
         </section>
-        <!-- Page Banner End -->
-        
+        <!--Page Header End-->
 
-        <!-- Project Area start -->
-        <section class="project-page-area pt-130 pb-100 rel z-1">
+
+        <!--Services Page V 2 Start-->
+        <section class="services-page-v-2">
             <div class="container">
-           
-                <div class="row justify-content-center">
-                    @if(count($allservices) > 0)
-                    <div class="col-lg-8">
-                        <div class="row">
-                                @foreach($allservices as $service)
-                                    <div class="col-md-6 item ">
-                                        <div class="project-item style-two wow fadeInUp delay-0-2s">
-                                            <div class="project-iamge">
-                                                <img src="<?php if(@$service->banner_image){?>{{asset('/images/service/'.@$service->banner_image)}}<?php }?>" alt="Project">
-                                                <div class="project-over">
-                                                    <a class="details-btn" href="{{route('service.single',$service->slug)}}"><i class="far fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="project-content">
-                                                <h5><a href="{{route('service.single',$service->slug)}}"> {!! ucwords(Str::limit(@$service->title, 35,'...')) !!}</a></h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                {{ $allservices->links('vendor.pagination.default') }}
+                
+                <div class="row">
+                @if(count($allservices) > 0)
+                    @foreach($allservices as $service)
+
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="services-one__single">
+                            <div class="services-one__img">
+                                <img src="<?php if(@$service->banner_image){?>{{asset('/images/service/'.@$service->banner_image)}}<?php }?>" alt="">
+                            </div>
+                            <div class="services-one__content">
+                               
+                                <h3 class="services-one__title"><a href="{{route('service.single',$service->slug)}}">{!! ucwords(Str::limit(@$service->title, 20,'..')) !!}</a></h3>
+                                <p class="services-one__text">{{ Str::limit(@$service->sub_description, 70,'..') }}</p>
+                                <div class="services-one__arrow">
+                                    <a href="{{route('service.single',$service->slug)}}"><i class="icon-right-arrow-1"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                      <div class="row">
-                        @include('frontend.pages.services.sidebar')
-                      </div>
+                    @endforeach
+
+                    <div class="blog-page__pagination">
+                            {{ $allservices->links('vendor.pagination.default') }}
                     </div>
+               
                     @else
 
                     <section class="no-results not-found">
-                        <header class="page-header">
                             <h2 class="page-title">Nothing Found</h2>
-                        </header>
                         <div class="page-content">
                             <p>It seems we can not find what you are looking for.</p>
+                        
                         </div>
                     </section>
                     @endif
@@ -80,8 +80,6 @@
                 </div>
             </div>
         </section>
-        <!-- Project Area end -->
-
- 
+        <!--Services Page V 2 End-->
 
 @endsection
