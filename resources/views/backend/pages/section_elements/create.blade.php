@@ -281,6 +281,21 @@
                                                          </div>
                                                      </div>
 
+                                                     <div class="form-group mb-3">
+                                                         <label>Button Text </label>
+                                                         <input type="text" maxlength="15" class="form-control" value="{{@$map_descp->button}}" name="button">
+                                                         <div class="invalid-feedback">
+                                                             Please enter the button text.
+                                                         </div>
+                                                     </div>
+                                                     <div class="form-group mb-3">
+                                                         <label>Button Link </label>
+                                                         <input type="text" class="form-control" value="{{@$map_descp->button_link}}" name="button_link">
+                                                         <div class="invalid-feedback">
+                                                             Please enter the button link.
+                                                         </div>
+                                                     </div>
+
 
                                                      <div class="form-group mb-3">
                                                          <label>Generated Map Code </label>
@@ -288,9 +303,7 @@
                                                          <div class="invalid-feedback">
                                                              Please enter the map code.
                                                          </div>
-                                                         <span class="text-muted text-danger">*Use the following link to generate map code: <a target="_blank" href="https://google-map-generator.com/#select
-
-">Map Generator</a></span>
+                                                         <span class="text-muted text-danger">*Use the following link to generate map code: <a target="_blank" href="https://google-map-generator.com/#select">Map Generator</a></span>
                                                      </div>
 
                                                  </div>
