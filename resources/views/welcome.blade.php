@@ -32,135 +32,185 @@
         text-align: center;
     }
 
+    section.newsletter-one.about-status {
+        margin-bottom: 50px;
+        margin-top: 50px;
+        z-index: unset;
+    }
+
+    .about-status .newsletter-one__inner{
+        padding-bottom: 36px;
+        justify-content: center;
+    }
+
+    .about-status .newsletter-one__inner .cta-one__right-count{
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    .newsletter-one__left > div {
+        margin-right: 50px;
+        margin-left: 20px;
+    }
+
+    .about-status p.cta-one__right-text {
+        margin-top: 5px;
+    }
 </style>
 @endsection
 @section('content')
 
     @if(count($sliders) > 0)
-        <!-- Slider Section Start -->
-        <section class="main-slider-area bgc-black-with-lighting rel z-1">
-            <div class="main-slider-active">
-                @foreach(@$sliders as $slider)
+        <!--Main Slider Start-->
+        <section class="main-slider clearfix">
+            <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
+                "effect": "fade",
+                "pagination": {
+                "el": "#main-slider-pagination",
+                "type": "bullets",
+                "clickable": true
+                },
+                "navigation": {
+                "nextEl": "#main-slider__swiper-button-next",
+                "prevEl": "#main-slider__swiper-button-prev"
+                },
+                "autoplay": {
+                "delay": 5000
+                }}'>
+                <div class="swiper-wrapper">
+                    @foreach(@$sliders as $slider)
+                        <div class="swiper-slide">
+                            <div class="image-layer"
+                                style="background-image: url({{ asset('/images/sliders/'.$slider->image) }});"></div>
+                            <!-- /.image-layer -->
+                            <div class="main-slider-overly-one"></div>
+                            <div class="main-slider-overly-two"></div>
+                            <div class="main-slider-shape-1 float-bob-x">
+                                <img src="{{asset('assets/frontend/images/shapes/main-slider-shape-1.png')}}" alt="">
+                            </div>
+                            <div class="main-slider-shape-2 float-bob-y">
+                                <img src="{{asset('assets/frontend/images/shapes/main-slider-shape-2.png')}}" alt="">
+                            </div>
+                            <div class="main-slider-shape-3 float-bob-y">
+                                <img src="{{asset('assets/frontend/images/shapes/main-slider-shape-3.png')}}" alt="">
+                            </div>
 
-                    <div class="slider-item">
-                        <div class="container">
-                            <div class="slider-content">
-                                <span class="sub-title"> {{@$slider->subheading}}</span>
-                                <h1> {{@$slider->heading}}</h1>
-                                <div class="slider-btns">
-                                    @if(@$slider->button)
-                                        <a href="{{@$slider->link}}" class="theme-btn">{{@$slider->button}} <i class="fas fa-angle-double-right"></i></a>
-                                    @endif
-                                   
-                                    @if(@$slider->button2)
-                                        <a href="{{@$slider->link2}}" class="theme-btn style-three">{{@$slider->button2}} <i class="fas fa-angle-double-right"></i></a>
-                                    @endif
-                             
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-10">
+                                        <div class="main-slider__content">
+                                            @if(@$slider->slider_link)
+                                                <div class="main-slider__video-link">
+                                                    <a href="{{@$slider->slider_link}}" class="video-popup">
+                                                        <div class="main-slider__video-icon">
+                                                            <span class="fa fa-play"></span>
+                                                            <i class="ripple"></i>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            @endif
+                                            <p class="main-slider__sub-title">{{@$slider->subheading}}</p>
+                                            <h2 class="main-slider__title">{{@$slider->heading}}</h2>
+                                            <div class="main-slider__btn-box">
+                                            @if(@$slider->button)
+                                                <a href="{{@$slider->link}}" class="thm-btn main-slider__btn">{{@$slider->button}}</a>
+                                            @endif
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="slider-video" style="background-image: url({{ asset('/images/sliders/'.$slider->image) }});">
-                            @if(@$slider->slider_link)
-                                <a href="{{@$slider->slider_link}}" class="mfp-iframe video-play"><i class="fas fa-play"></i></a>
-                            @endif
-                            
-                            <span class="video-title cd-headline clip">
-                                <span class="cd-words-wrapper">
-                                    @if(@$slider->caption1)
-                                        <b class="is-visible">{{@$slider->caption1}}</b>
-                                    @endif
-                                    @if(@$slider->caption2)
+                    @endforeach
 
-                                        <b>{{@$slider->caption2}}</b>
-                                    @endif
+                </div>
 
-                                </span>
-                            </span>
-                        </div>
+                <!-- If we need navigation buttons -->
+                <div class="main-slider__nav">
+                    <div class="swiper-button-prev" id="main-slider__swiper-button-next">
+                        <i class="icon-up-arrow"></i>
                     </div>
-                @endforeach
-            </div>
-            <div class="container"><div class="main-slider-dots"></div></div>
-            <div class="slider-shapes">
-                <img class="shape dots one" src="{{asset('assets/frontend/images/shapes/slider-dots.png')}}" alt="Shape">
-                <img class="shape dots two" src="{{asset('assets/frontend/images/shapes/slider-dots.png')}}" alt="Shape">
-                <img class="shape wave-line" src="{{asset('assets/frontend/images/shapes/slider-wave-line.png')}}" alt="Shape">
-                <img class="shape circle" src="{{asset('assets/frontend/images/shapes/slider-circle.png')}}" alt="Shape">
+                    <div class="swiper-button-next" id="main-slider__swiper-button-prev">
+                        <i class="icon-up-arrow"></i>
+                    </div>
+                </div>
+
             </div>
         </section>
-        <!-- Slider Section End -->
+        <!--Main Slider End-->
+
     @endif
 
 
     @if(!empty($homepage_info->welcome_description))
         <!-- Welcome section -->
-        <section class="about-area-one pt-130 pb-125 rel z-1">
+        <section class="join-us">
             <div class="container">
-                <div class="row justify-content-between align-items-center">
+                <div class="row">
                     @if(@$homepage_info->welcome_side_image == "left") 
 
-                        <div class="col-lg-5">
-                            <div class="about-image-one bg-squire-shape rmb-85 wow fadeInUp delay-0-2s">
-                                <img src="<?php if(!empty(@$homepage_info->welcome_image)){ echo '/images/home/welcome/'.@$homepage_info->welcome_image; } ?>" alt="About us">
-                                <img class="image-left" src="{{asset('/assets/frontend/images/shapes/image-left.png')}}" alt="shape">
+                        <div class="col-xl-5 col-lg-5">
+                            <div class="join-us__left">
+                                <div class="join-us__img-box wow slideInLeft" data-wow-delay="100ms"
+                                    data-wow-duration="2500ms">
+                                    <div class="join-us__img">
+                                        <img src="<?php if(!empty(@$homepage_info->welcome_image)){ echo '/images/home/welcome/'.@$homepage_info->welcome_image; } ?>" alt="About us">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-7">
-                            <div class="about-content-one wow fadeInUp delay-0-4s">
-                                <div class="section-title mb-45">
+                        <div class="col-xl-7 col-lg-7">
+                            <div class="join-us__right">
+                                <div class="section-title text-left">
                                     @if(@$homepage_info->welcome_subheading)
-                                        <span class="sub-title mb-15">{{ucfirst(@$homepage_info->welcome_subheading)}}</span>
+                                        <span class="section-title__tagline">{{ucfirst(@$homepage_info->welcome_subheading)}}</span>
                                     @endif
                                     @if(@$homepage_info->welcome_heading)
-                                        <h2>{{ucwords(@$homepage_info->welcome_heading)}}</h2>
+                                        <h2 class="section-title__title"><span>{{ucwords(@$homepage_info->welcome_heading)}}</span></h2>
                                     @endif
-                                
+                            
                                 </div>
-                    
-                                <div class="content">
-                                    <p>
-                                    {{ ucfirst(@$homepage_info->welcome_description) }}
-                                    </p>
+                                <p class="join-us__text-one">{{ ucfirst(@$homepage_info->welcome_description) }}</p>
+                        
                                     @if(@$homepage_info->welcome_button)
-
-                                        <a href="{{@$homepage_info->welcome_link}}" class="theme-btn mt-15" tabindex="0">{{ucwords(@$homepage_info->welcome_button)}} <i class="fas fa-angle-double-right"></i></a>    
+                                            <a href="{{@$homepage_info->welcome_link}}" class="thm-btn join-us__right-btn">{{ucwords(@$homepage_info->welcome_button)}} </a>
                                     @endif
-                                </div>
-                                
+                        
                             </div>
                         </div>
-
                     @else
-                        <div class="col-xl-6 col-lg-7">
-                            <div class="about-content-one wow fadeInUp delay-0-4s">
-                                <div class="section-title mb-45">
+                        <div class="col-xl-7 col-lg-7">
+                            <div class="join-us__right">
+                                <div class="section-title text-left">
                                     @if(@$homepage_info->welcome_subheading)
-                                        <span class="sub-title mb-15">{{ucfirst(@$homepage_info->welcome_subheading)}}</span>
+                                        <span class="section-title__tagline">{{ucfirst(@$homepage_info->welcome_subheading)}}</span>
                                     @endif
                                     @if(@$homepage_info->welcome_heading)
-                                        <h2>{{ucwords(@$homepage_info->welcome_heading)}}</h2>
+                                        <h2 class="section-title__title"><span>{{ucwords(@$homepage_info->welcome_heading)}}</span></h2>
                                     @endif
-                                
+                            
                                 </div>
-                    
-                                <div class="content">
-                                    <p>
-                                    {{ ucfirst(@$homepage_info->welcome_description) }}
-                                    </p>
+                                <p class="join-us__text-one">{{ ucfirst(@$homepage_info->welcome_description) }}</p>
+                        
                                     @if(@$homepage_info->welcome_button)
-
-                                        <a href="{{@$homepage_info->welcome_link}}" class="theme-btn mt-15" tabindex="0">{{ucwords(@$homepage_info->welcome_button)}} <i class="fas fa-angle-double-right"></i></a>    
+                                            <a href="{{@$homepage_info->welcome_link}}" class="thm-btn join-us__right-btn">{{ucwords(@$homepage_info->welcome_button)}} </a>
                                     @endif
+                        
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-5 col-lg-5">
+                            <div class="join-us__left">
+                                <div class="join-us__img-box wow slideInLeft" data-wow-delay="100ms"
+                                    data-wow-duration="2500ms">
+                                    <div class="join-us__img">
+                                        <img src="<?php if(!empty(@$homepage_info->welcome_image)){ echo '/images/home/welcome/'.@$homepage_info->welcome_image; } ?>" alt="About us">
+                                    </div>
                                 </div>
-                                
                             </div>
                         </div>
-                        <div class="col-lg-5">
-                            <div class="about-image-one bg-squire-shape rmb-85 wow fadeInUp delay-0-2s">
-                                <img src="<?php if(!empty(@$homepage_info->welcome_image)){ echo '/images/home/welcome/'.@$homepage_info->welcome_image; } ?>" alt="About us">
-                                <img class="image-left" src="{{asset('/assets/frontend/images/shapes/image-left.png')}}" alt="shape">
-                            </div>
-                        </div>
+
                     @endif
 
                 </div>
@@ -228,28 +278,25 @@
 
     @if(!empty($homepage_info->action_heading))
         <!-- CTA Area start -->
-        <section class="call-to-action-area rel z-1">
+        <div class="cta-one">
+            <div class="cta-one__bg-img" style="background-image: url({{asset('/assets/frontend/images/background/cta-one-bg-1.jpg')}});">
+            </div>
             <div class="container">
-                <div class="cta-inner bgs-cover" style="background-image: url({{asset('/assets/frontend/images/background/cta-bg.jpg')}});">
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="cta-item wow fadeInLeft delay-0-2s">
-                                <div class="icon"><i class="flaticon-target"></i></div>
-                                <h4>{{@$homepage_info->action_heading}}</h4>
-                                <a href="{{@$homepage_info->action_link}}" class="details-btn"><i class="far fa-arrow-right"></i></a>
-                            </div>
+                <div class="cta-one__inner">
+                    <div class="cta-one__left">
+                        <div class="cta-one__content">
+                            <h3 class="cta-one__title">{{@$homepage_info->action_heading}}</h3>
                         </div>
-                        <div class="col-xl-6">
-                            <div class="cta-item wow fadeInRight delay-0-2s">
-                                <div class="icon"><i class="flaticon-target"></i></div>
-                                <h4>{{@$homepage_info->action_heading2}}</h4>
-                                <a href="{{@$homepage_info->action_link2}}" class="details-btn"><i class="far fa-arrow-right"></i></a>
-                            </div>
+                    </div>
+                    <div class="cta-one__right">
+                        <div class="cta-one__right-button">
+                            <a href="{{@$homepage_info->action_link}}" class="thm-btn cta-one__right-btn">Learn More</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+     
         <!-- CTA Area end -->
     @endif
 
@@ -308,222 +355,244 @@
 
     @if(count($latestServices) > 2)
         <!-- Services start -->
-        <section class="project-area-three pb-100 rel z-1">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg10">
-                        <div class="section-title text-center mb-50 wow fadeInUp delay-0-2s">
-                            <span class="sub-title mb-15">Recent Services</span>
-                            <h2>Look at our latest services</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-three-active">
-                @foreach(@$latestServices as $service)
 
-                    <div class="project-item style-two wow fadeInUp delay-0-2s">
-                        <div class="project-iamge">
-                            <img src="<?php if(@$service->banner_image){?>{{asset('/images/service/'.@$service->banner_image)}}<?php }?>" alt="Project">
-                            <div class="project-over">
-                                <a class="details-btn" href="{{route('service.single',$service->slug)}}"><i class="far fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h4><a href="{{route('service.single',$service->slug)}}">{{ucwords(@$service->title)}}</a></h4>
-                        </div>
-                    </div>
-                @endforeach
+        <section class="services-one">
+              <div class="services-one__bg" style="background-image: url(assets/images/backgrounds/services-one-bg.jpg);">
+              </div>
+              <div class="container">
+                  <div class="services-one__top text-center">
+                      <div class="section-title">
+                          <span class="section-title__tagline">Recent Services</span>
+                          <h2 class="section-title__title"><span>Look at our latest services</span></h2>
+                      </div>
+                    
+                  </div>
+
+                  <div class="services-one__bottom">
+                      <div class="services-one__carousel owl-carousel owl-theme thm-owl__carousel" data-owl-options='{
+                          "loop": true,
+                          "autoplay": false,
+                          "margin": 30,
+                          "nav": false,
+                          "dots": true,
+                          "smartSpeed": 500,
+                          "autoplayTimeout": 10000,
+                          "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                          "responsive": {
+                              "0": {
+                                  "items": 1
+                              },
+                              "768": {
+                                  "items": 2
+                              },
+                              "992": {
+                                  "items": 2
+                              },
+                              "1200": {
+                                  "items": 3
+                              }
+                          }
+                      }'>
+                          @foreach(@$latestServices as $service)
+
+
+                          <div class="item">
+                              <div class="services-one__single">
+                                  <div class="services-one__img">
+                                      <img src="<?php if(@$service->banner_image){?>{{asset('/images/service/'.@$service->banner_image)}}<?php }?>" alt="">
+                                  </div>
+                                  <div class="services-one__content">
+                                     
+                                      <h3 class="services-one__title"><a href="{{route('service.single',$service->slug)}}">{{ucwords(@$service->title)}}</a></h3>
+                                      <p class="services-one__text">{{ucfirst(Str::limit(@$service->sub_description, 70,'...'))}}</p>
+                                      <div class="services-one__arrow">
+                                          <a href="{{route('service.single',$service->slug)}}"><i class="icon-right-arrow-1"></i></a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          @endforeach
+
                 
-            </div>
-        </section>
+                      </div>
+                  </div>
+              </div>
+          </section>
+
+
         <!-- Services  end -->
     @endif
 
-    @if(!empty($homepage_info->what_heading1))
-        <!-- What make us different start -->
-        <section class="work-process-area pb-95 rel z-1">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="section-title text-center mb-55 wow fadeInUp delay-0-2s">
-                            <span class="sub-title mb-15">Our Strength</span>
-                            <h2>What makes us difference?</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="work-process-wrap rel z-1">
-                    <div class="row justify-content-between">
-                        <div class="col-xl-3 col-lg-5 col-sm-6">
-                            <div class="work-process-item mt-55 wow fadeInUp delay-0-2s">
-                                <div class="icon">
-                                    <span class="number">01</span>
-                                    <div class="icon-different">
-                                        <img src="<?php if(!empty(@$homepage_info->what_image1)){ echo '/images/home/welcome/'.@$homepage_info->what_image1; } ?>" alt="different">
-                                    </div>
-                                </div>
-                                <h4>{{ucwords(@$homepage_info->what_heading1)}}</h4>
-                               
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-5 col-sm-6">
-                            <div class="work-process-item wow fadeInUp delay-0-4s">
-                                <div class="icon">
-                                    <span class="number">02</span>
-                                    <div class="icon-different">
-                                     <img src="<?php if(!empty(@$homepage_info->what_image2)){ echo '/images/home/welcome/'.@$homepage_info->what_image2; } ?>" alt="different">
-                                    </div>
-                                
-                                </div>
-                                <h4>{{ucwords(@$homepage_info->what_heading2)}}</h4>
-                             
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-5 col-sm-6">
-                            <div class="work-process-item my-5 wow fadeInUp delay-0-6s">
-                                <div class="icon">
-                                    <span class="number">03</span>
-                                    <div class="icon-different">
-                                        <img src="<?php if(!empty(@$homepage_info->what_image3)){ echo '/images/home/welcome/'.@$homepage_info->what_image3; } ?>" alt="different">
-                                    </div>
-
-                                </div>
-                                <h4>{{ucwords(@$homepage_info->what_heading3)}}</h4>
-                               
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-5 col-sm-6">
-                            <div class="work-process-item mt-80 wow fadeInUp delay-0-8s">
-                                <div class="icon">
-                                    <span class="number">04</span>
-                                    <div class="icon-different">
-                                    <img src="<?php if(!empty(@$homepage_info->what_image4)){ echo '/images/home/welcome/'.@$homepage_info->what_image4; } ?>" alt="different">
-                                    </div>
-                                </div>
-                                <h4>{{ucwords(@$homepage_info->what_heading4)}}</h4>
-                               
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-5 col-sm-6">
-                            <div class="work-process-item mt-45 wow fadeInUp delay-0-8s">
-                                <div class="icon">
-                                    <span class="number">05</span>
-                                    <div class="icon-different">
-                                    <img src="<?php if(!empty(@$homepage_info->what_image5)){ echo '/images/home/welcome/'.@$homepage_info->what_image5; } ?>" alt="different">
-                                    </div>
-                                </div>
-                                <h4>{{ucwords(@$homepage_info->what_heading5)}}</h4>
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work-process-shape">
-                        <img src="{{asset('/assets/frontend/images/shapes/worp-process-step.png')}}" alt="Shape">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- What make us different end -->
-    @endif
 
     @if(!empty($homepage_info->why_heading))
-        <!-- Why US start -->
-        <section class="statistics-area-two bgc-lighter bgs-cover pt-130 pb-100 rel z-1" style="background-image: url({{asset('/assets/frontend/images/features/support-features-bg.png')}});">
+        <!--Status-->
+        <section class="newsletter-one about-status">
             <div class="container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-lg-5">
-                        <div class="statistics-two-content mb-30 rmb-35 wow fadeInRight delay-0-2s">
-                            <div class="section-title mb-25">
-                                <span class="sub-title style-two mb-15">{{ucwords(@$homepage_info->why_subheading)}}</span>
-                                <h2>{{ucwords(@$homepage_info->why_heading)}}</h2>
+                <div class="newsletter-one__inner">
+                    <div class="newsletter-one__left">
+                       
+                        <div class="cta-one__right-count">
+                            <div class="cta-one__right-count-box">
+                                <span class="fas fa-plane-departure cta-one__right-icon"></span>
+                                <h3 class="odometer odometer-auto-theme" data-count="{{ (@$homepage_info->project_completed) ? @$homepage_info->project_completed : '3670';}}">
+                                    <div class="odometer-inside">
+                                        <span class="odometer-digit">
+                                            <span class="odometer-digit-spacer">8</span>
+                                            <span class="odometer-digit-inner">
+                                                
+                                                <span class="odometer-ribbon">
+                                                    <span class="odometer-ribbon-inner">
+                                                        <span class="odometer-value">1</span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="odometer-digit"><span class="odometer-digit-spacer">8</span>
+                                        <span class="odometer-digit-inner"><span class="odometer-ribbon">
+                                            <span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span>
+                                        </span></span>
+                                    </div>
+                                </h3>
+                                <span class="cta-one__right-expert-plus">+</span>
                             </div>
-                            <p>{{ucwords(@$homepage_info->why_description)}}</p>
-                            @if(@$homepage_info->why_button)
-                              
-                                <a href="{{@$homepage_info->why_link}}" class="theme-btn mt-15">{{@$homepage_info->why_button}} <i class="fas fa-angle-double-right"></i></a>
+                            <p class="cta-one__right-text">Projects Completed</p>
+                        </div>
+                        
+                        <div class="cta-one__right-count">
+                            <div class="cta-one__right-count-box">
+                                <span class="fas fa-user-check cta-one__right-icon"></span>
+                                <h3 class="odometer odometer-auto-theme" data-count="{{ (@$homepage_info->visa_approved) ? @$homepage_info->visa_approved : '3670';}}">
+                                    <div class="odometer-inside">
+                                        <span class="odometer-digit">
+                                            <span class="odometer-digit-spacer">8</span>
+                                            <span class="odometer-digit-inner">
+                                                
+                                                <span class="odometer-ribbon">
+                                                    <span class="odometer-ribbon-inner">
+                                                        <span class="odometer-value">1</span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="odometer-digit"><span class="odometer-digit-spacer">8</span>
+                                        <span class="odometer-digit-inner"><span class="odometer-ribbon">
+                                            <span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span>
+                                        </span></span>
+                                    </div>
+                                </h3>
+                                <span class="cta-one__right-expert-plus">+</span>
+                            </div>
+                            <p class="cta-one__right-text">Visa Approved</p>
+                        </div>
 
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="statistics-two-counters mt-30">
-                            <div class="row">
-                                <div class="col-xl-5 col-lg-6 col-md-5 col-sm-6">
-                                    <div class="counter-item counter-text-wrap wow fadeInLeft delay-0-2s">
-                                        <i class="flaticon-startup"></i>
-                                        <span class="count-text" data-speed="3000" data-stop="{{@$homepage_info->project_completed}}">0</span>
-                                        <span class="counter-title">Projects Completed</span>
+                        <div class="cta-one__right-count">
+                            <div class="cta-one__right-count-box">
+                                <span class="far fa-smile cta-one__right-icon"></span>
+                                <h3 class="odometer odometer-auto-theme" data-count="{{ (@$homepage_info->happy_clients) ? @$homepage_info->happy_clients : '3670';}}">
+                                    <div class="odometer-inside">
+                                        <span class="odometer-digit">
+                                            <span class="odometer-digit-spacer">8</span>
+                                            <span class="odometer-digit-inner">
+                                                
+                                                <span class="odometer-ribbon">
+                                                    <span class="odometer-ribbon-inner">
+                                                        <span class="odometer-value">1</span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="odometer-digit"><span class="odometer-digit-spacer">8</span>
+                                        <span class="odometer-digit-inner"><span class="odometer-ribbon">
+                                            <span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span>
+                                        </span></span>
                                     </div>
-                                </div>
-                                <div class="col-xl-5 col-lg-6 col-md-5 col-sm-6">
-                                     <div class="counter-item for-margin counter-text-wrap wow fadeInLeft delay-0-5s">
-                                        <i class="fas fa-user-check"></i>
-                                        <span class="count-text" data-speed="3000" data-stop="{{@$homepage_info->visa_approved}}">0</span>
-                                        <span class="counter-title">Visa Approved</span>
-                                    </div>
-                                </div>
-                                <div class="col-xl-5 col-lg-6 col-md-5 col-sm-6 offset-xl-1">
-                                    <div class="counter-item counter-text-wrap wow fadeInLeft delay-0-2s">
-                                        <i class="fal fa-smile"></i>
-                                        <span class="count-text" data-speed="3000" data-stop="{{@$homepage_info->happy_clients}}">0</span>
-                                        <span class="counter-title">Happy Clients</span>
-                                    </div>
-                                </div>
-                                <div class="col-xl-5 col-lg-6 col-md-5 col-sm-6">
-                                    <div class="counter-item for-margin counter-text-wrap wow fadeInLeft delay-0-5s">
-                                        <i class="fas fa-thumbs-up"></i>
-                                        <span class="count-text" data-speed="3000" data-stop="{{@$homepage_info->success_stories}}">0</span>
-                                        <span class="counter-title">Success Stories</span>
-                                    </div>
-                                </div>
+                                </h3>
+                                <span class="cta-one__right-expert-plus">+</span>
                             </div>
+                            <p class="cta-one__right-text">Happy Clients</p>
+                        </div>
+
+                        <div class="cta-one__right-count">
+                            <div class="cta-one__right-count-box">
+                                <span class="fas fa-thumbs-up cta-one__right-icon"></span>
+                                <h3 class="odometer odometer-auto-theme" data-count="{{ (@$homepage_info->success_stories) ? @$homepage_info->success_stories : '3670';}}">
+                                    <div class="odometer-inside">
+                                        <span class="odometer-digit">
+                                            <span class="odometer-digit-spacer">8</span>
+                                            <span class="odometer-digit-inner">
+                                                
+                                                <span class="odometer-ribbon">
+                                                    <span class="odometer-ribbon-inner">
+                                                        <span class="odometer-value">1</span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="odometer-digit"><span class="odometer-digit-spacer">8</span>
+                                        <span class="odometer-digit-inner"><span class="odometer-ribbon">
+                                            <span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span>
+                                        </span></span>
+                                    </div>
+                                </h3>
+                                <span class="cta-one__right-expert-plus">+</span>
+                            </div>
+                            <p class="cta-one__right-text">Success Stories</p>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </section>
-        <!-- Why US end -->
+        <!--Status-->
     @endif
 
-    @if(count($latestPosts) > 3)
-        <!-- Blog Area start -->
-        <section class="news-blog-area pt-130 pb-75 rel z-1">
+    @if(count($latestPosts) > 2)
+
+        <!--Blog One Start-->
+        <section class="blog-three">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="section-title text-center mb-60 wow fadeInUp delay-0-2s">
-                            <span class="sub-title mb-15">Get Every Updates</span>
-                            <h2>Read Latest News & Blog</h2>
-                        </div>
-                    </div>
+                <div class="section-title text-center">
+                    <span class="section-title__tagline">Our Blog List</span>
+                    <h2 class="section-title__title"><span>Latest Blog Post</span></h2>
                 </div>
-                <div class="row large-gap">
+                <div class="row">
                     @foreach(@$latestPosts as $post)
 
-                        <div class="col-lg-6">
-                            <div class="blog-item wow fadeInUp delay-0-2s">
-                                <div class="image">
-                                    <img src="<?php if(@$post->image){?>{{asset('/images/blog/'.@$post->image)}}<?php }?>" alt="Blog">
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="blog-three__single">
+                            <div class="blog-three__img">
+                                <img src="<?php if(@$post->image){?>{{asset('/images/blog/'.@$post->image)}}<?php }?>" alt="">
+                            </div>
+                            <div class="blog-three__content">
+                                <div class="blog-three__date">
+                                    <span>{{date('j',strtotime(@$post->created_at))}}</span>
+                                    <p>{{date('F',strtotime(@$post->created_at))}}</p>
                                 </div>
-                                <div class="content">
-                                    <span class="date"><i class="far fa-calendar-alt"></i> {{date('M j, Y',strtotime(@$post->created_at))}}</span>
-                                    <h4><a href="{{route('blog.single',$post->slug)}}">{{ucwords($post->title)}}</a></h4>
-                                    <div class="author post-category">
-                                        <i class="fas fa-tasks-alt"></i>
-                                        <div class="post-by">
-                                            <span>Post Category</span>
-                                            <a href="{{url('/blog/categories/'.@$post->category->slug)}}">{{ucwords(@$post->category->name)}}</a>
-                                        </div>
+                                <div class="blog-three__title-box">
+                                    
+                                    <h4 class="blog-three__title"><a href="{{route('blog.single',$post->slug)}}">{{ucwords($post->title)}}</a></h4>
+                                </div>
+                                <div class="blog-three__content-box">
+                                    <ul class="blog-three__meta list-unstyled">
+                                        <li>
+                                            <a href="{{url('/blog/categories/'.@$post->category->slug)}}"><i class="icon-tag-chevron-thin"></i>{{ucwords(@$post->category->name)}}</a>
+                                        </li>
+                                       
+                                    </ul>
+                                    <div class="blog-three__btn-box">
+                                        <a href="{{route('blog.single',$post->slug)}}">Details<i
+                                                class="icon-fast-forward-thin-double-arrows"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     @endforeach
-              
+                    
                 </div>
             </div>
         </section>
-        <!-- Blog Area end -->
+  
     @endif
 
 
