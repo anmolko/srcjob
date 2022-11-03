@@ -110,7 +110,7 @@
                                     <span class="icon-location"></span>
                                 </div>
                                 <div class="text">
-                                    <p>if(!empty(@$setting_data->address)) {{@$setting_data->address}} @else Kathmandu, Nepal @endif</p>
+                                    <p>@if(!empty(@$setting_data->address)) {{@$setting_data->address}} @else Kathmandu, Nepal @endif</p>
                                 </div>
                             </li>
                         </ul>
