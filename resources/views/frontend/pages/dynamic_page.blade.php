@@ -525,7 +525,7 @@
           @if(@$slider_list_elements[0]->heading)
           
           <section class="services-one">
-              <div class="services-one__bg" style="background-image: url(assets/images/backgrounds/services-one-bg.jpg);">
+              <div class="services-one__bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/services-one-bg.jpg')}});">
               </div>
               <div class="container">
                   <div class="services-one__top text-center">
