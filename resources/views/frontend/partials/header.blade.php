@@ -107,10 +107,10 @@
                             </li>
                             <li>
                                 <div class="icon">
-                                    <span class="icon-clock"></span>
+                                    <span class="icon-location"></span>
                                 </div>
                                 <div class="text">
-                                    <p>Sun - Fri 9:00 am - 6:00 pm</p>
+                                    <p>if(!empty(@$setting_data->address)) {{@$setting_data->address}} @else Kathmandu, Nepal @endif</p>
                                 </div>
                             </li>
                         </ul>
