@@ -56,6 +56,10 @@
     .about-status p.cta-one__right-text {
         margin-top: 5px;
     }
+
+    .blog-three {
+        margin-top: 50px;
+    }
 </style>
 @endsection
 @section('content')
@@ -220,59 +224,64 @@
     @endif
 
     @if(!empty($homepage_info->mv_heading))
-
         <!-- Mission Vision start -->
-        <section class="statistics-area-three bgs-cover pb-100 rel z-1">
+        <section class="testimonials-one">
             <div class="container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-lg-7">
-                        <div class="statistics-three-content rmb-65 wow fadeInRight delay-0-2s">
-                            <div class="row justify-content-center justify-content-xl-start">
-                                <div class="col-xl-9">
-                                    <div class="section-title mb-60">
-                                        @if(@$homepage_info->mv_subheading)
-                                            <span class="sub-title mb-15">{{ucfirst(@$homepage_info->mv_subheading)}}</span>
-                                        @endif
-                                        @if(@$homepage_info->mv_heading)
-                                            <h2>{{ucwords(@$homepage_info->mv_heading)}}</h2>
-                                        @endif
+                <div class="section-title text-center">
+                  
+                    @if(@$homepage_info->mv_subheading)
+                        <span class="section-title__tagline">{{ucfirst(@$homepage_info->mv_subheading)}}</span>
+                    @endif
+                    @if(@$homepage_info->mv_heading)
+                        <h2 class="section-title__title"><span>{{ucwords(@$homepage_info->mv_heading)}}</span></h2>
+                    @endif
+                </div>
+                <div class="service-details__core-product-points-box">
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <div class="service-details__core-product-points-single">
+                                <div class="service-details__core-product-icon-box">
+                                    <div class="service-details__core-product-icon">
+                                        <span class="icon-marketing-analysis-marketing-research"></span>
+                                    </div>
+                                    <div class="service-details__core-product-content">
+                                        <h4>Mission</h4>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
-                                    <div class="counter-item style-two counter-text-wrap wow fadeInRight delay-0-3s">
-                                        <i class="flaticon-startup"></i>
-                                        <span class="counter-title">Mission</span>
-                                        <p>{{ ucfirst(@$homepage_info->mission) }}</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
-                                    <div class="counter-item style-two counter-text-wrap wow fadeInRight delay-0-5s">
-                                        <i class="fas fa-eye"></i>
-
-                                        <span class="counter-title">Vision</span>
-                                        <p>{{ ucfirst(@$homepage_info->vision) }}</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
-                                    <div class="counter-item style-two counter-text-wrap wow fadeInRight delay-0-7s">
-                                        <i class="flaticon-global"></i>
-
-                                        <span class="counter-title">Value</span>
-                                        <p>{{ ucfirst(@$homepage_info->value) }}</p>
-                                    </div>
-                                </div>
+                                <p class="service-details__core-product-text-2">{{ ucfirst(@$homepage_info->mission) }}</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="statistics-three-image bg-squire-shape mb-30 wow fadeInLeft delay-0-3s">
-                            <img src="<?php if(!empty(@$homepage_info->mv_image)){ echo '/images/home/welcome/'.@$homepage_info->mv_image; } ?>" alt="mission vision">
-                            <img class="image-right" src="{{asset('/assets/frontend/images/shapes/image-right.png')}}" alt="shape">
+                        <div class="col-xl-4">
+                            <div class="service-details__core-product-points-single">
+                                <div class="service-details__core-product-icon-box">
+                                    <div class="service-details__core-product-icon">
+                                        <span class="fas fa-eye"></span>
+                                    </div>
+                                    <div class="service-details__core-product-content">
+                                        <h4>Vision</h4>
+                                    </div>
+                                </div>
+                                <p class="service-details__core-product-text-2">{{ ucfirst(@$homepage_info->vision) }}</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="service-details__core-product-points-single">
+                                <div class="service-details__core-product-icon-box">
+                                    <div class="service-details__core-product-icon">
+                                        <span class="icon-protection-rain-umbrella"></span>
+                                    </div>
+                                    <div class="service-details__core-product-content">
+                                        <h4>Value</h4>
+                                    </div>
+                                </div>
+                                <p class="service-details__core-product-text-2">{{ ucfirst(@$homepage_info->value) }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+      
         <!-- Mission Vision end -->
     @endif
 
@@ -566,7 +575,7 @@
                             <div class="blog-three__content">
                                 <div class="blog-three__date">
                                     <span>{{date('j',strtotime(@$post->created_at))}}</span>
-                                    <p>{{date('F',strtotime(@$post->created_at))}}</p>
+                                    <p>{{date('M',strtotime(@$post->created_at))}}</p>
                                 </div>
                                 <div class="blog-three__title-box">
                                     
