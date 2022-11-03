@@ -78,7 +78,7 @@ class HomePageController extends Controller
             $path    = base_path().'/public/images/home/welcome/';
             $image   = $request->file('welcome_image');
             $name1   = uniqid().'_welcome_'.$image->getClientOriginalName();
-            $moved          = Image::make($image->getRealPath())->fit(450, 595)->orientate()->save($path.$name1);
+            $moved          = Image::make($image->getRealPath())->fit(375, 497)->orientate()->save($path.$name1);
             if ($moved){
                 $data['welcome_image']= $name1;
             }
@@ -142,7 +142,7 @@ class HomePageController extends Controller
             $path    = base_path().'/public/images/home/welcome/';
             $image = $request->file('welcome_image');
             $name1 = uniqid().'_welcome_'.$image->getClientOriginalName();
-            $moved          = Image::make($image->getRealPath())->fit(450, 595)->orientate()->save($path.$name1);
+            $moved          = Image::make($image->getRealPath())->fit(385, 497)->orientate()->save($path.$name1);
 
             if ($moved){
                 $update_theme->welcome_image= $name1;
@@ -171,8 +171,6 @@ class HomePageController extends Controller
         $update_theme                        =  HomePage::find($id);
         $update_theme->action_heading        =  $request->input('action_heading');
         $update_theme->action_link           =  $request->input('action_link');
-        $update_theme->action_heading2        =  $request->input('action_heading2');
-        $update_theme->action_link2           =  $request->input('action_link2');
         $update_theme->updated_by            =  Auth::user()->id;
 
         $status=$update_theme->update();
@@ -222,20 +220,6 @@ class HomePageController extends Controller
         $update_theme->value                =  $request->input('value');
         $update_theme->updated_by           =  Auth::user()->id;
         $oldimage                           = $update_theme->mv_image;
-
-        if (!empty($request->file('mv_image'))){
-            $path    = base_path().'/public/images/home/welcome/';
-            $image = $request->file('mv_image');
-            $name1 = uniqid().'_mv_'.$image->getClientOriginalName();
-            $moved          = Image::make($image->getRealPath())->fit(450, 595)->orientate()->save($path.$name1);
-
-            if ($moved){
-                $update_theme->mv_image= $name1;
-                if (!empty($oldimage) && file_exists(public_path().'/images/home/welcome/'.$oldimage)){
-                    @unlink(public_path().'/images/home/welcome/'.$oldimage);
-                }
-            }
-        }
 
         $status=$update_theme->update();
         if($status){
