@@ -60,6 +60,10 @@
     .blog-three {
         margin-top: 50px;
     }
+
+    .join-us__text-one {
+        margin-bottom: 40px;
+    }
 </style>
 @endsection
 @section('content')
@@ -223,217 +227,6 @@
         <!-- Welcome end -->
     @endif
 
-    @if(!empty($homepage_info->mv_heading))
-        <!-- Mission Vision start -->
-        <section class="testimonials-one">
-            <div class="container">
-                <div class="section-title text-center">
-                  
-                    @if(@$homepage_info->mv_subheading)
-                        <span class="section-title__tagline">{{ucfirst(@$homepage_info->mv_subheading)}}</span>
-                    @endif
-                    @if(@$homepage_info->mv_heading)
-                        <h2 class="section-title__title"><span>{{ucwords(@$homepage_info->mv_heading)}}</span></h2>
-                    @endif
-                </div>
-                <div class="service-details__core-product-points-box">
-                    <div class="row">
-                        <div class="col-xl-4">
-                            <div class="service-details__core-product-points-single">
-                                <div class="service-details__core-product-icon-box">
-                                    <div class="service-details__core-product-icon">
-                                        <span class="icon-marketing-analysis-marketing-research"></span>
-                                    </div>
-                                    <div class="service-details__core-product-content">
-                                        <h4>Mission</h4>
-                                    </div>
-                                </div>
-                                <p class="service-details__core-product-text-2">{{ ucfirst(@$homepage_info->mission) }}</p>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="service-details__core-product-points-single">
-                                <div class="service-details__core-product-icon-box">
-                                    <div class="service-details__core-product-icon">
-                                        <span class="fas fa-eye"></span>
-                                    </div>
-                                    <div class="service-details__core-product-content">
-                                        <h4>Vision</h4>
-                                    </div>
-                                </div>
-                                <p class="service-details__core-product-text-2">{{ ucfirst(@$homepage_info->vision) }}</p>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="service-details__core-product-points-single">
-                                <div class="service-details__core-product-icon-box">
-                                    <div class="service-details__core-product-icon">
-                                        <span class="icon-protection-rain-umbrella"></span>
-                                    </div>
-                                    <div class="service-details__core-product-content">
-                                        <h4>Value</h4>
-                                    </div>
-                                </div>
-                                <p class="service-details__core-product-text-2">{{ ucfirst(@$homepage_info->value) }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-      
-        <!-- Mission Vision end -->
-    @endif
-
-    @if(!empty($homepage_info->action_heading))
-        <!-- CTA Area start -->
-        <div class="cta-one">
-            <div class="cta-one__bg-img" style="background-image: url({{asset('/assets/frontend/images/background/cta-one-bg-1.jpg')}});">
-            </div>
-            <div class="container">
-                <div class="cta-one__inner">
-                    <div class="cta-one__left">
-                        <div class="cta-one__content">
-                            <h3 class="cta-one__title">{{@$homepage_info->action_heading}}</h3>
-                        </div>
-                    </div>
-                    <div class="cta-one__right">
-                        <div class="cta-one__right-button">
-                            <a href="{{@$homepage_info->action_link}}" class="thm-btn cta-one__right-btn">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-     
-        <!-- CTA Area end -->
-    @endif
-
-    @if(!empty($homepage_info->core_main_heading))
-
-        <!-- Core value start -->
-        <section class="feature-area-four pb-100 pt-200 rel z-1">
-            <div class="container">
-                <div class="section-title text-center mb-50 wow fadeInUp delay-0-2s">
-                    <span class="sub-title style-two mb-15">Amazing  Features</span>
-                    <h2>{{ucwords(@$homepage_info->core_main_heading)}}</h2>
-                    <p>{{ucfirst(@$homepage_info->core_main_description)}}</p>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-xl-4 col-md-6">
-                        <div class="feature-item-four wow fadeInUp delay-0-3s">
-                            <h4><i class="fas fa-handshake"></i><a href="">{{ucwords(@$homepage_info->core_heading1)}}</a></h4>
-                            <p>{{ucfirst(@$homepage_info->core_description1)}}</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="feature-item-four wow fadeInUp delay-0-5s">
-                            <h4><i class="fas fa-file-contract"></i><a href="">{{ucwords(@$homepage_info->core_heading2)}}</a></h4>
-                            <p>{{ucfirst(@$homepage_info->core_description2)}}</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="feature-item-four wow fadeInUp delay-0-7s">
-                            <h4><i class="far fa-eye"></i><a href="">{{ucwords(@$homepage_info->core_heading3)}}</a></h4>
-                            <p>{{ucfirst(@$homepage_info->core_description3)}}</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="feature-item-four wow fadeInUp delay-0-3s">
-                            <h4><i class="fas fa-balance-scale"></i><a href="">{{ucwords(@$homepage_info->core_heading4)}}</a></h4>
-                            <p>{{ucfirst(@$homepage_info->core_description4)}}</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="feature-item-four wow fadeInUp delay-0-5s">
-                            <h4><i class="fas fa-chart-network"></i><a href="">{{ucwords(@$homepage_info->core_heading5)}}</a></h4>
-                            <p>{{ucfirst(@$homepage_info->core_description5)}}</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="feature-item-four wow fadeInUp delay-0-7s">
-                            <h4><i class="fas fa-user-shield"></i><a href="">{{ucwords(@$homepage_info->core_heading6)}}</a></h4>
-                            <p>{{ucfirst(@$homepage_info->core_description6)}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Core value end -->
-    @endif
-
-    @if(count($latestServices) > 2)
-        <!-- Services start -->
-
-        <section class="services-one">
-              <div class="services-one__bg" style="background-image: url(assets/images/backgrounds/services-one-bg.jpg);">
-              </div>
-              <div class="container">
-                  <div class="services-one__top text-center">
-                      <div class="section-title">
-                          <span class="section-title__tagline">Recent Services</span>
-                          <h2 class="section-title__title"><span>Look at our latest services</span></h2>
-                      </div>
-                    
-                  </div>
-
-                  <div class="services-one__bottom">
-                      <div class="services-one__carousel owl-carousel owl-theme thm-owl__carousel" data-owl-options='{
-                          "loop": true,
-                          "autoplay": false,
-                          "margin": 30,
-                          "nav": false,
-                          "dots": true,
-                          "smartSpeed": 500,
-                          "autoplayTimeout": 10000,
-                          "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
-                          "responsive": {
-                              "0": {
-                                  "items": 1
-                              },
-                              "768": {
-                                  "items": 2
-                              },
-                              "992": {
-                                  "items": 2
-                              },
-                              "1200": {
-                                  "items": 3
-                              }
-                          }
-                      }'>
-                          @foreach(@$latestServices as $service)
-
-
-                          <div class="item">
-                              <div class="services-one__single">
-                                  <div class="services-one__img">
-                                      <img src="<?php if(@$service->banner_image){?>{{asset('/images/service/'.@$service->banner_image)}}<?php }?>" alt="">
-                                  </div>
-                                  <div class="services-one__content">
-                                     
-                                      <h3 class="services-one__title"><a href="{{route('service.single',$service->slug)}}">{{ucwords(@$service->title)}}</a></h3>
-                                      <p class="services-one__text">{{ucfirst(Str::limit(@$service->sub_description, 70,'...'))}}</p>
-                                      <div class="services-one__arrow">
-                                          <a href="{{route('service.single',$service->slug)}}"><i class="icon-right-arrow-1"></i></a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          @endforeach
-
-                
-                      </div>
-                  </div>
-              </div>
-          </section>
-
-
-        <!-- Services  end -->
-    @endif
-
-
-    @if(!empty($homepage_info->why_heading))
         <!--Status-->
         <section class="newsletter-one about-status">
             <div class="container">
@@ -553,7 +346,248 @@
             </div>
         </section>
         <!--Status-->
+    @if(!empty($homepage_info->mv_heading))
+        <!-- Mission Vision start -->
+        <section class="testimonials-one">
+            <div class="container">
+                <div class="section-title text-center">
+                  
+                    @if(@$homepage_info->mv_subheading)
+                        <span class="section-title__tagline">{{ucfirst(@$homepage_info->mv_subheading)}}</span>
+                    @endif
+                    @if(@$homepage_info->mv_heading)
+                        <h2 class="section-title__title"><span>{{ucwords(@$homepage_info->mv_heading)}}</span></h2>
+                    @endif
+                </div>
+                <div class="service-details__core-product-points-box">
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <div class="service-details__core-product-points-single">
+                                <div class="service-details__core-product-icon-box">
+                                    <div class="service-details__core-product-icon">
+                                        <span class="icon-marketing-analysis-marketing-research"></span>
+                                    </div>
+                                    <div class="service-details__core-product-content">
+                                        <h4>Mission</h4>
+                                    </div>
+                                </div>
+                                <p class="service-details__core-product-text-2">{{ ucfirst(@$homepage_info->mission) }}</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="service-details__core-product-points-single">
+                                <div class="service-details__core-product-icon-box">
+                                    <div class="service-details__core-product-icon">
+                                        <span class="fas fa-eye"></span>
+                                    </div>
+                                    <div class="service-details__core-product-content">
+                                        <h4>Vision</h4>
+                                    </div>
+                                </div>
+                                <p class="service-details__core-product-text-2">{{ ucfirst(@$homepage_info->vision) }}</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="service-details__core-product-points-single">
+                                <div class="service-details__core-product-icon-box">
+                                    <div class="service-details__core-product-icon">
+                                        <span class="icon-protection-rain-umbrella"></span>
+                                    </div>
+                                    <div class="service-details__core-product-content">
+                                        <h4>Value</h4>
+                                    </div>
+                                </div>
+                                <p class="service-details__core-product-text-2">{{ ucfirst(@$homepage_info->value) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      
+        <!-- Mission Vision end -->
     @endif
+
+    @if(!empty($homepage_info->action_heading))
+        <!-- CTA Area start -->
+        <div class="cta-one">
+            <div class="cta-one__bg-img" style="background-image: url({{asset('/assets/frontend/images/background/cta-one-bg-1.jpg')}});">
+            </div>
+            <div class="container">
+                <div class="cta-one__inner">
+                    <div class="cta-one__left">
+                        <div class="cta-one__content">
+                            <h3 class="cta-one__title">{{@$homepage_info->action_heading}}</h3>
+                        </div>
+                    </div>
+                    <div class="cta-one__right">
+                        <div class="cta-one__right-button">
+                            <a href="{{@$homepage_info->action_link}}" class="thm-btn cta-one__right-btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+        <!-- CTA Area end -->
+    @endif
+
+
+
+    @if(!empty($homepage_info->core_main_heading))
+
+        <!-- Core value start -->
+        <section class="about-one">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="about-one__left">
+                            <div class="section-title text-left">
+                                <span class="section-title__tagline">{{ucwords(@$homepage_info->core_main_heading)}}</span>
+                                <h2 class="section-title__title"> <span>{{ucfirst(@$homepage_info->core_main_description)}}</span></h2>
+                            </div>
+                            <ul class="about-one__points list-unstyled">
+                                <li>
+                                    <div class="icon">
+                                        <span class="fas fa-handshake"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h4>{{ucwords(@$homepage_info->core_heading1)}}</h4>
+                                        <p>{{ucfirst(@$homepage_info->core_description1)}}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-analysis-analytics-business"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h4>{{ucwords(@$homepage_info->core_heading2)}}</h4>
+                                        <p>{{ucfirst(@$homepage_info->core_description2)}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="about-one__right">
+                            <ul class="about-one__points list-unstyled">
+                                <li>
+                                    <div class="icon">
+                                        <span class="far fa-eye"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h4>{{ucwords(@$homepage_info->core_heading3)}}</h4>
+                                        <p>{{ucfirst(@$homepage_info->core_description3)}}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="fas fa-balance-scale"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h4>{{ucwords(@$homepage_info->core_heading4)}}</h4>
+                                        <p>{{ucfirst(@$homepage_info->core_description4)}}</p>
+                                    </div>
+                                </li>
+                                 <li>
+                                    <div class="icon">
+                                        <span class="fas fa-network-wired"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h4>{{ucwords(@$homepage_info->core_heading5)}}</h4>
+                                        <p>{{ucfirst(@$homepage_info->core_description5)}}</p>
+                                    </div>
+                                </li>
+                                 <li>
+                                    <div class="icon">
+                                        <span class="fas fa-user-shield"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h4>{{ucwords(@$homepage_info->core_heading6)}}</h4>
+                                        <p>{{ucfirst(@$homepage_info->core_description6)}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Core value end -->
+    @endif
+
+    @if(count($latestServices) > 2)
+        <!-- Services start -->
+
+        <section class="services-one">
+              <div class="services-one__bg" style="background-image: url(assets/images/backgrounds/services-one-bg.jpg);">
+              </div>
+              <div class="container">
+                  <div class="services-one__top text-center">
+                      <div class="section-title">
+                          <span class="section-title__tagline">Recent Services</span>
+                          <h2 class="section-title__title"><span>Look at our latest services</span></h2>
+                      </div>
+                    
+                  </div>
+
+                  <div class="services-one__bottom">
+                      <div class="services-one__carousel owl-carousel owl-theme thm-owl__carousel" data-owl-options='{
+                          "loop": true,
+                          "autoplay": false,
+                          "margin": 30,
+                          "nav": false,
+                          "dots": true,
+                          "smartSpeed": 500,
+                          "autoplayTimeout": 10000,
+                          "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                          "responsive": {
+                              "0": {
+                                  "items": 1
+                              },
+                              "768": {
+                                  "items": 2
+                              },
+                              "992": {
+                                  "items": 2
+                              },
+                              "1200": {
+                                  "items": 3
+                              }
+                          }
+                      }'>
+                          @foreach(@$latestServices as $service)
+
+
+                          <div class="item">
+                              <div class="services-one__single">
+                                  <div class="services-one__img">
+                                      <img src="<?php if(@$service->banner_image){?>{{asset('/images/service/'.@$service->banner_image)}}<?php }?>" alt="">
+                                  </div>
+                                  <div class="services-one__content">
+                                     
+                                      <h3 class="services-one__title"><a href="{{route('service.single',$service->slug)}}">{{ucwords(@$service->title)}}</a></h3>
+                                      <p class="services-one__text">{{ucfirst(Str::limit(@$service->sub_description, 70,'...'))}}</p>
+                                      <div class="services-one__arrow">
+                                          <a href="{{route('service.single',$service->slug)}}"><i class="icon-right-arrow-1"></i></a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          @endforeach
+
+                
+                      </div>
+                  </div>
+              </div>
+          </section>
+
+
+        <!-- Services  end -->
+    @endif
+
+
+
 
     @if(count($latestPosts) > 2)
 
