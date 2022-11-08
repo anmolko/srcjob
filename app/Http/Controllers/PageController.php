@@ -354,26 +354,26 @@ class PageController extends Controller
                             if ($section->section_slug == 'basic_section') {
                                 $basic_element = SectionElement::where('page_section_id', $section->id)
                                     ->first();
-                                if (!empty($basic_element->image) && file_exists(public_path() . '/images/uploads/section_elements/basic_section/' . $basic_element->image)) {
-                                    @unlink(public_path() . '/images/uploads/section_elements/basic_section/' . $basic_element->image);
+                                if (!empty($basic_element->image) && file_exists(public_path() . '/images/section_elements/basic_section/' . $basic_element->image)) {
+                                    @unlink(public_path() . '/images/section_elements/basic_section/' . $basic_element->image);
                                 }
                             }
                             if ($section->section_slug == 'background_image_section') {
                                 $bgimage_element = SectionElement::where('page_section_id', $section->id)
                                     ->first();
-                                if (!empty($bgimage_element->image) && file_exists(public_path() . '/images/uploads/section_elements/bgimage_section/' . $bgimage_element->image)) {
-                                    @unlink(public_path() . '/images/uploads/section_elements/bgimage_section/' . $bgimage_element->image);
+                                if (!empty($bgimage_element->image) && file_exists(public_path() . '/images/section_elements/bgimage_section/' . $bgimage_element->image)) {
+                                    @unlink(public_path() . '/images/section_elements/bgimage_section/' . $bgimage_element->image);
                                 }
                             }
                             if ($section->section_slug == 'slider_list') {
                                 $list1_element = SectionElement::where('page_section_id', $section->id)
                                     ->get();
                                 foreach ($list1_element as $elements) {
-                                    if (!empty($elements->list_image) && file_exists(public_path() . '/images/uploads/section_elements/list_1/' . $elements->list_image)) {
-                                        @unlink(public_path() . '/images/uploads/section_elements/list_1/' . $elements->list_image);
+                                    if (!empty($elements->list_image) && file_exists(public_path() . '/images/section_elements/list_1/' . $elements->list_image)) {
+                                        @unlink(public_path() . '/images/section_elements/list_1/' . $elements->list_image);
                                     }
-                                    if (!empty('thumb_' . $elements->list_image) && file_exists(public_path() . '/images/uploads/section_elements/list_1/thumb/thumb_' . $elements->list_image)) {
-                                        @unlink(public_path() . '/images/uploads/section_elements/list_1/thumb/thumb_' . $elements->list_image);
+                                    if (!empty('thumb_' . $elements->list_image) && file_exists(public_path() . '/images/section_elements/list_1/thumb/thumb_' . $elements->list_image)) {
+                                        @unlink(public_path() . '/images/section_elements/list_1/thumb/thumb_' . $elements->list_image);
                                     }
                                 }
                             }
@@ -381,8 +381,8 @@ class PageController extends Controller
                                 $icon = SectionElement::where('page_section_id', $section->id)
                                     ->get();
                                 foreach ($icon as $elements) {
-                                    if (!empty($elements->list_image) && file_exists(public_path() . '/images/uploads/section_elements/list_1/' . $elements->list_image)) {
-                                        @unlink(public_path() . '/images/uploads/section_elements/list_1/' . $elements->list_image);
+                                    if (!empty($elements->list_image) && file_exists(public_path() . '/images/section_elements/list_1/' . $elements->list_image)) {
+                                        @unlink(public_path() . '/images/section_elements/list_1/' . $elements->list_image);
                                     }
                                 }
                             }
@@ -390,8 +390,8 @@ class PageController extends Controller
                                 $process = SectionElement::where('page_section_id', $section->id)
                                     ->get();
                                 foreach ($process as $elements) {
-                                    if (!empty($elements->list_image) && file_exists(public_path() . '/images/uploads/section_elements/list_1/' . $elements->list_image)) {
-                                        @unlink(public_path() . '/images/uploads/section_elements/list_1/' . $elements->list_image);
+                                    if (!empty($elements->list_image) && file_exists(public_path() . '/images/section_elements/list_1/' . $elements->list_image)) {
+                                        @unlink(public_path() . '/images/section_elements/list_1/' . $elements->list_image);
                                     }
                                 }
                             }
@@ -399,9 +399,9 @@ class PageController extends Controller
                                 $gallery_element = SectionGallery::where('page_section_id', $section->id)
                                     ->get();
                                 foreach ($gallery_element as $elements) {
-                                    if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path() . '/images/uploads/section_elements/gallery/' . $elements->filename) && file_exists(public_path() . '/images/uploads/section_elements/gallery/' . $elements->resized_name)) {
-                                        @unlink(public_path() . '/images/uploads/section_elements/gallery/' . $elements->filename);
-                                        @unlink(public_path() . '/images/uploads/section_elements/gallery/' . $elements->resized_name);
+                                    if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path() . '/images/section_elements/gallery/' . $elements->filename) && file_exists(public_path() . '/images/section_elements/gallery/' . $elements->resized_name)) {
+                                        @unlink(public_path() . '/images/section_elements/gallery/' . $elements->filename);
+                                        @unlink(public_path() . '/images/section_elements/gallery/' . $elements->resized_name);
                                     }
                                 }
                             }
@@ -409,9 +409,9 @@ class PageController extends Controller
                                 $gallery_element_2 = SectionGallery::where('page_section_id', $section->id)
                                     ->get();
                                 foreach ($gallery_element_2 as $elements) {
-                                    if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path() . '/images/uploads/section_elements/gallery_2/' . $elements->filename) && file_exists(public_path() . '/images/uploads/section_elements/gallery_2/' . $elements->resized_name)) {
-                                        @unlink(public_path() . '/images/uploads/section_elements/gallery_2/' . $elements->filename);
-                                        @unlink(public_path() . '/images/uploads/section_elements/gallery_2/' . $elements->resized_name);
+                                    if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path() . '/images/section_elements/gallery_2/' . $elements->filename) && file_exists(public_path() . '/images/section_elements/gallery_2/' . $elements->resized_name)) {
+                                        @unlink(public_path() . '/images/section_elements/gallery_2/' . $elements->filename);
+                                        @unlink(public_path() . '/images/section_elements/gallery_2/' . $elements->resized_name);
                                     }
                                 }
                             }
@@ -469,23 +469,23 @@ class PageController extends Controller
             if($section->section_slug == 'basic_section'){
                 $basic_element = SectionElement::where('page_section_id', $section->id)
                     ->first();
-                if (!empty($basic_element->image) && file_exists(public_path().'/images/uploads/section_elements/basic_section/'.$basic_element->image)){
-                    @unlink(public_path().'/images/uploads/section_elements/basic_section/'.$basic_element->image);
+                if (!empty($basic_element->image) && file_exists(public_path().'/images/section_elements/basic_section/'.$basic_element->image)){
+                    @unlink(public_path().'/images/section_elements/basic_section/'.$basic_element->image);
                 }
             }
             if($section->section_slug == 'background_image_section'){
                 $bgimage_element = SectionElement::where('page_section_id', $section->id)
                     ->first();
-                if (!empty($bgimage_element->image) && file_exists(public_path().'/images/uploads/section_elements/bgimage_section/'.$bgimage_element->image)){
-                    @unlink(public_path().'/images/uploads/section_elements/bgimage_section/'.$bgimage_element->image);
+                if (!empty($bgimage_element->image) && file_exists(public_path().'/images/section_elements/bgimage_section/'.$bgimage_element->image)){
+                    @unlink(public_path().'/images/section_elements/bgimage_section/'.$bgimage_element->image);
                 }
             }
             if($section->section_slug == 'small_box_description'){
                 $process = SectionElement::where('page_section_id', $section->id)
                     ->get();
                 foreach ($process as $elements){
-                    if (!empty($elements->list_image) && file_exists(public_path().'/images/uploads/section_elements/list_1/'.$elements->list_image)){
-                        @unlink(public_path().'/images/uploads/section_elements/list_1/'.$elements->list_image);
+                    if (!empty($elements->list_image) && file_exists(public_path().'/images/section_elements/list_1/'.$elements->list_image)){
+                        @unlink(public_path().'/images/section_elements/list_1/'.$elements->list_image);
                     }
                 }
             }
@@ -493,11 +493,11 @@ class PageController extends Controller
                 $list1_element = SectionElement::where('page_section_id', $section->id)
                     ->get();
                 foreach ($list1_element as $elements){
-                    if (!empty($elements->list_image) && file_exists(public_path().'/images/uploads/section_elements/list_1/'.$elements->list_image)){
-                        @unlink(public_path().'/images/uploads/section_elements/list_1/'.$elements->list_image);
+                    if (!empty($elements->list_image) && file_exists(public_path().'/images/section_elements/list_1/'.$elements->list_image)){
+                        @unlink(public_path().'/images/section_elements/list_1/'.$elements->list_image);
                     }
-                    if (!empty('thumb_'.$elements->list_image) && file_exists(public_path().'/images/uploads/section_elements/list_1/thumb/thumb_'.$elements->list_image)){
-                        @unlink(public_path().'/images/uploads/section_elements/list_1/thumb/thumb_'.$elements->list_image);
+                    if (!empty('thumb_'.$elements->list_image) && file_exists(public_path().'/images/section_elements/list_1/thumb/thumb_'.$elements->list_image)){
+                        @unlink(public_path().'/images/section_elements/list_1/thumb/thumb_'.$elements->list_image);
                     }
                 }
             }
@@ -505,9 +505,9 @@ class PageController extends Controller
                 $gallery_element = SectionGallery::where('page_section_id', $section->id)
                     ->get();
                 foreach ($gallery_element as $elements){
-                    if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path().'/images/uploads/section_elements/gallery/'.$elements->filename) && file_exists(public_path().'/images/uploads/section_elements/gallery/'.$elements->resized_name)){
-                        @unlink(public_path().'/images/uploads/section_elements/gallery/'.$elements->filename);
-                        @unlink(public_path().'/images/uploads/section_elements/gallery/'.$elements->resized_name);
+                    if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path().'/images/section_elements/gallery/'.$elements->filename) && file_exists(public_path().'/images/section_elements/gallery/'.$elements->resized_name)){
+                        @unlink(public_path().'/images/section_elements/gallery/'.$elements->filename);
+                        @unlink(public_path().'/images/section_elements/gallery/'.$elements->resized_name);
                     }
                 }
             }
@@ -515,8 +515,8 @@ class PageController extends Controller
                 $icon = SectionElement::where('page_section_id', $section->id)
                     ->get();
                 foreach ($icon as $elements){
-                    if (!empty($elements->list_image) && file_exists(public_path().'/images/uploads/section_elements/list_1/'.$elements->list_image)){
-                        @unlink(public_path().'/images/uploads/section_elements/list_1/'.$elements->list_image);
+                    if (!empty($elements->list_image) && file_exists(public_path().'/images/section_elements/list_1/'.$elements->list_image)){
+                        @unlink(public_path().'/images/section_elements/list_1/'.$elements->list_image);
                     }
                 }
             }
@@ -524,9 +524,9 @@ class PageController extends Controller
                 $gallery_element_2 = SectionGallery::where('page_section_id', $section->id)
                     ->get();
                 foreach ($gallery_element_2 as $elements){
-                    if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path().'/images/uploads/section_elements/gallery_2/'.$elements->filename) && file_exists(public_path().'/images/uploads/section_elements/gallery_2/'.$elements->resized_name)){
-                        @unlink(public_path().'/images/uploads/section_elements/gallery_2/'.$elements->filename);
-                        @unlink(public_path().'/images/uploads/section_elements/gallery_2/'.$elements->resized_name);
+                    if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path().'/images/section_elements/gallery_2/'.$elements->filename) && file_exists(public_path().'/images/section_elements/gallery_2/'.$elements->resized_name)){
+                        @unlink(public_path().'/images/section_elements/gallery_2/'.$elements->filename);
+                        @unlink(public_path().'/images/section_elements/gallery_2/'.$elements->resized_name);
                     }
                 }
             }
